@@ -1,0 +1,33 @@
+<%= require('html-loader!../src/static/vars.php') %>
+<!DOCTYPE html>
+<html lang="en" id="html">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700,900&display=swap&subset=cyrillic" rel="stylesheet">
+    <title>Horoscop personal</title>
+    <%= require('html-loader!../src/static/tracker_code.php') %>
+    <script type="text/javascript">
+      !function(win, doc, tag) {
+        let searchParams = (new URLSearchParams(window.location.search)).get('f')
+        const F = searchParams ? searchParams : 'UW-K-IQ6slR';
+        window.mbp = { f: F, b: '{clickid}', k: '{subid}' }
+        let el_tag = doc.createElement(tag)
+        el_tag.async = 1;
+        el_tag.src = '<%= VUE_APP_LINK %>/event/js?v=' + mbp.f;
+        let bd = doc.getElementsByTagName(tag)[0]
+        bd.parentNode.append(el_tag);
+      } (window, document, "script");
+    </script>
+
+  </head>
+  <body>
+  <%= require('html-loader!../src/static/fb_html_pixel.php') %>
+
+  <div id="app"></div>
+  <input type="hidden" id='binom' value="{clickid}">
+    <!-- built files will be auto injected -->
+  </body>
+</html>
