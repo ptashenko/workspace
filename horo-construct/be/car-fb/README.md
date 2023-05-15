@@ -1,0 +1,1 @@
+https://horoscop.life/be/fb_chat_monthly_horoscope/
