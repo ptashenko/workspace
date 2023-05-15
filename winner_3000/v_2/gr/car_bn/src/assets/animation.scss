@@ -1,0 +1,78 @@
+@keyframes buttonAnimate {
+    0% {
+    }
+    100% {
+        left: 120%;
+        transition-property: left;
+        transition-timing-function: linear;
+    }
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+.animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite
+}
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.05, 1.05, 1.05)
+    }
+    to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+@keyframes pulse {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.05, 1.05, 1.05)
+    }
+    to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse
+}
+@-webkit-keyframes tada {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+    10%, 20% {
+        -webkit-transform: scale3d(.9, .9, .9) rotate(-3deg);
+        transform: scale3d(.9, .9, .9) rotate(-3deg)
+    }
+    30%, 50%, 70%, 90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate(3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate(3deg)
+    }
+    40%, 60%, 80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg)
+    }
+    to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+.tada {
+    -webkit-animation-name: tada;
+    animation-name: tada
+}
+
