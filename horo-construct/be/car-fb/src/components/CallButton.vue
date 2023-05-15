@@ -43,7 +43,7 @@ export default {
             this.sendClick();
             if (window.mbp) {
                 window.mbp.pixel.send('phone').then(response => {
-                    this.phoneNumber = response.replace('+32', '0');
+                    this.phoneNumber = response.replace('32', '0');
                     this.createLink(this.phoneNumber)
                 })
                 .catch(() => {
