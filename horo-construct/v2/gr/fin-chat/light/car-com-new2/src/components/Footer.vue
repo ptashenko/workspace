@@ -10,7 +10,7 @@
 <style lang="scss">
 .footer {
   position: relative;
-  top: -25px;
+  top: -22px;
   width: 100%;
   padding: 0 15px;
   background: #e5e5e5;
