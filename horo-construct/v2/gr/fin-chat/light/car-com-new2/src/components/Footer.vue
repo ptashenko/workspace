@@ -2,7 +2,7 @@
   <footer
     class="footer"
     v-html="
-      !view ? footer.main_footer[footerGeo] : footer.second_footer[footerGeo]
+      !view ? limitParagraphs(footer.main_footer[footerGeo], 2) : footer.second_footer[footerGeo]
     "
   ></footer>
 </template>
@@ -34,5 +34,11 @@
 <script>
 export default {
   props: ["view", "footer", "footerGeo"],
+  methods: {
+    limitParagraphs(value) {
+      const paragraphs = value.split("</p>").slice(0, 2).join("</p>");
+      return paragraphs;
+    },
+  },
 };
 </script>
