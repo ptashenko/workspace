@@ -2,7 +2,7 @@
   <div
     class="footer"
     v-html="
-      pageNumber === 1
+      screen === 'preview'
         ? footerObj.main_footer[footerGeo]
         : footerObj.second_footer[footerGeo]
     "
@@ -12,7 +12,7 @@
 <script>
 export default {
   name: "ResultFooter",
-  props: ["pageNumber", "footerObj", "footerGeo"],
+  props: ["screen", "footerObj", "footerGeo"],
 };
 </script>
 
