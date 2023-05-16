@@ -531,7 +531,7 @@
             this.days = this.genBirthDay(1, 31);
             this.months = this.genBirthDay(1, 12);
             this.years = this.genBirthDay(
-                1923,
+                1900,
                 new Date().getFullYear()
             ).reverse();
         }
