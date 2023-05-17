@@ -3,9 +3,8 @@
     <div class="comments-wrapper">
       <div class="comments-header">
         <div class="comments-counter">
-          {{ commentsBlock.commentsCounterText[0] }}
           {{ commentsBlock.comments.length }}
-          {{ commentsBlock.commentsCounterText[1] }}
+          {{ commentsBlock.commentsCounterText }}
         </div>
       </div>
 
