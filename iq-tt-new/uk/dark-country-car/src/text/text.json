@@ -1,0 +1,134 @@
+{
+  "start": {
+    "title": [
+      "Every ",
+      "second ",
+      "person has at least once in their life thought about ",
+      "moving ",
+      "to another ",
+      "country"
+    ],
+    "subtitle": "Feel like relocating but are not sure about the best place to live?",
+    "block": [
+      "Take this short test and get a ",
+      "result ",
+      "that will ",
+      "encourage ",
+      "you to make ",
+      "a change."
+    ],
+    "tiktok": "Share",
+    "button": "Start"
+  },
+  "test": {
+    "questions": [
+      {
+        "question": "How good is your English?",
+        "answers": [
+          "I am a native speaker",
+          "I listen to and watch a lot of content in English, but cannot speak it fluently",
+          "I know other languages"
+        ]
+      },
+      {
+        "question": "What are your food preferences?",
+        "answers": [
+          "Fish and meat - boiled, fried, baked.",
+          "Croissants for breakfast and paella for dinner.",
+          "Fast food: pizza or kebab will do."
+        ]
+      },
+      {
+        "question": "How do you feel about the Tradition vs Progress situation?",
+        "answers": [
+          "Traditions are obstacles to progress",
+          "I'm quite conservative",
+          "I'm quite conservative, but a touch of liberalism wouldn't hurt"
+        ]
+      },
+      {
+        "question": "Where would you spend your holiday?",
+        "answers": [
+          "On a road trip to the Grand Canyon",
+          "On the beach. I dream about enjoying the sun and the sound of the sea.",
+          "I'd love to stroll through the historic streets and have a nice cup of coffee."
+        ]
+      },
+      {
+        "question": "Your hobbies are...",
+        "answers": [
+          "Extreme and regular sports",
+          "Music, painting",
+          "Reading, yoga and hiking"
+        ]
+      },
+      {
+        "question": "What type of weather do you prefer?",
+        "answers": [
+          "I don't like extreme heat, I'd rather stay somewhere cool",
+          "As long as there are no sudden changes in temperature, any place will do",
+          "I can't live without warm weather and the smell of the sea"
+        ]
+      },
+      {
+        "question": "Which of these topic(s) sound more exciting to you?",
+        "answers": ["Travelling", "Love and poetry", "Psychology"]
+      },
+      {
+        "question": "Which adjective describes you best?",
+        "answers": ["Adventurous", "Smart", "Determined"]
+      },
+      {
+        "question": "Complete the sentence: Life...",
+        "answers": [
+          "Is a big adventure",
+          "Is full of possibilities",
+          "Is all about the experience"
+        ]
+      }
+    ],
+    "users": "Users"
+  },
+
+  "result": {
+    "attention": [
+      "Our algorithm has analysed your answers. The result may surprise you!"
+    ],
+    "text": "After taking our test, most users become more motivated to relocate!",
+    "block": [
+      "The result may be unexpectedly exciting. ",
+      "Check it out yourself!"
+    ],
+    "btn": "CALL and GET RESULT"
+  },
+  "price": "Calls cost £6/call plus your phone company’s access charge",
+  "commentsBlock": {
+    "commentsCounterText": ["Last", "comments"],
+    "comments": [
+      {
+        "login": "Nancy",
+        "text": "Fun test. That food question made me laugh so hard! Idk buddy, it's fish and chips for me."
+      },
+      {
+        "login": "Trent",
+        "text": "Mediterranean countries are cute but mountain views are just really something else"
+      },
+      {
+        "login": "JAMES",
+        "text": "It's not bad, it helped me answer some of my long-standing questions."
+      },
+      {
+        "login": "Denny",
+        "text": "I got Spain. I'm in the right place yay!"
+      },
+      {
+        "login": "Crid",
+        "text": "I think France is still the best option for my artsy and delicate personality"
+      },
+      {
+        "login": "Angela",
+        "text": "It's not really a call to relocate, but it's something to think about."
+      }
+    ]
+  }
+}
