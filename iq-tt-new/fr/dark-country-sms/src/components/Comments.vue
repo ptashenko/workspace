@@ -3,8 +3,9 @@
     <div class="comments-wrapper">
       <div class="comments-header">
         <div class="comments-counter">
+          {{ commentsBlock.commentsCounterText[0] }}
           {{ commentsBlock.comments.length }}
-          {{ commentsBlock.commentsCounterText }}
+          {{ commentsBlock.commentsCounterText[1] }}
         </div>
       </div>
 
@@ -37,11 +38,7 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    this.commentsBlock.commentsCounterText;
-  }
-}
+export default {};
 </script>
 
 <style scoped lang="scss">

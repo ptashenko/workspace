@@ -1,0 +1,135 @@
+{
+  "start": {
+    "title": [
+      "Une ",
+      "personne ",
+      "sur deux pense à ",
+      "déménager ",
+      "dans un autre ",
+      "pays ",
+      "au moins une fois dans sa vie"
+    ],
+    "subtitle": "Vous cherchez à déménager mais vous n'êtes pas sûr du meilleur endroit pour vivre?",
+    "block": [
+      "Répondez à ce petit quiz et obtenez un ",
+      "résultat ",
+      "qui vous ",
+      "encouragera ",
+      "à faire ",
+      "un changement.."
+    ],
+    "tiktok": "Share",
+    "button": "Pour commencer"
+  },
+  "test": {
+    "questions": [
+      {
+        "question": "Quel est votre niveau d'anglais?",
+        "answers": [
+          "Je suis de langue maternelle",
+          "J'écoute et regarde beaucoup de contenus en anglais, mais je ne peux pas parler couramment",
+          "Je sais d'autres langues"
+        ]
+      },
+      {
+        "question": "Quelles sont vos préférences alimentaires?",
+        "answers": [
+          "Poisson et viande - bouillis, frits, cuits au four.",
+          "Croissant pour le petit déjeuner, paella pour le dîner.",
+          "Restauration rapide : pizza ou kebab feront l'affaire."
+        ]
+      },
+      {
+        "question": "Que pensez-vous de la situation Tradition vs Progrès?",
+        "answers": [
+          "Les traditions entravent le progrès.",
+          "Je suis plutôt conservateur.",
+          "Je suis plutôt conservateur, mais un peu de libéralisme ne ferait pas de mal."
+        ]
+      },
+      {
+        "question": "Où passeriez-vous vos vacances?",
+        "answers": [
+          "Lors d'une excursion au Grand Canyon",
+          "Sur la plage. Je rêve de profiter du soleil et du son de la mer.",
+          "J'aimerais marcher dans les rues historiques et prendre une bonne tasse de café."
+        ]
+      },
+      {
+        "question": "Vos loisirs...",
+        "answers": [
+          "Les sports extrêmes et réguliers",
+          "Les sports extrêmes et réguliers",
+          "Lecture, yoga et promenade"
+        ]
+      },
+      {
+        "question": "Quel type de climat préférez-vous?",
+        "answers": [
+          "Je n'aime pas la chaleur extrême, je préfère rester dans un endroit frais.",
+          "Tant qu'il n'y a pas de changement de température soudain, n'importe quel endroit fera l'affaire",
+          "Je ne peux pas vivre sans l'air chaud et l'odeur de la mer"
+        ]
+      },
+      {
+        "question": "Le(s)quel(s) de ces sujets vous intéressent le plus?",
+        "answers": ["Voyage", "Amour et poésie", "Psychologie"]
+      },
+      {
+        "question": "Quel adjectif te décrit le mieux?",
+        "answers": ["Aventurier", "Intelligent", "Déterminé"]
+      },
+      {
+        "question": "Complète la phrase : La vie...",
+        "answers": [
+          "C'est une grande aventure",
+          "Plein de possibilités",
+          "Tout est question d'expérience"
+        ]
+      }
+    ],
+    "users": "Utilisateurs"
+  },
+
+  "result": {
+    "attention": [
+      "Notre algorithme analyse vos réponses. Le résultat pourrait vous surprendre!"
+    ],
+    "text": "Après avoir réussi notre test, la plupart des utilisateurs sont plus motivés à bouger!",
+    "block": [
+      "TLe résultat peut être étonnamment intéressant. ",
+      "Vérifiez par vous-même!"
+    ],
+    "btn": "Obtenir le résultat"
+  },
+  "price": "",
+  "commentsBlock": {
+    "commentsCounterText": "commentaires",
+    "comments": [
+      {
+        "login": "Nancy",
+        "text": "Une épreuve amusante. Cette question sur la nourriture m'a tellement fait rire! Mec, c'est du poisson et des frites pour moi."
+      },
+      {
+        "login": "Trent",
+        "text": "Les pays méditerranéens sont beaux, mais le paysage de montagne est vraiment autre chose"
+      },
+      {
+        "login": "JAMES",
+        "text": "Pas mal, a aidé à répondre à certaines de mes questions de longue date."
+      },
+      {
+        "login": "Denny",
+        "text": "J'ai acheté l'Espagne. je suis au bon endroit youpi!"
+      },
+      {
+        "login": "Crid",
+        "text": "Je pense que la France reste le meilleur choix pour ma personnalité artistique et raffinée"
+      },
+      {
+        "login": "Angela",
+        "text": "Ce n'est pas vraiment un appel à bouger, mais c'est une chose à laquelle il faut réfléchir."
+      }
+    ]
+  }
+}
