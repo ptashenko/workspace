@@ -158,6 +158,7 @@ export default {
   img {
     width: 120%;
     margin: vh(20px) 0;
+    padding: 0 vh(20px);
   }
 
   .decsriprion {
@@ -173,10 +174,6 @@ export default {
       color: #6658d9;
     }
   }
-}
-
-.decsriprion {
-  padding: 0 vh(20px);
 }
 
 .button {
