@@ -28,7 +28,6 @@ import Start from "@/components/Start";
 import Test from "@/components/Test";
 import Calculate from "@/components/Calculate";
 import Results from "@/components/Results";
-import { postSubs } from "@/services/landAPI";
 import Footer from '@/text/Footer';
 
 export default {
@@ -44,7 +43,6 @@ export default {
     return {
       page: "start",
       click_id: null,
-      QUERY: this.getQuery(window.location.search) || null,
       sumCode: null,
     };
   },
@@ -106,49 +104,15 @@ export default {
     nextPageStart() {
       this.page = "start";
     },
-    getQuery(string) {
-      return string
-        .slice(1)
-        .split("&")
-        .map((queryParam) => {
-          let kvp = queryParam.split("=");
-          return { key: kvp[0], value: kvp[1] };
-        })
-        .reduce((query, kvp) => {
-          query[kvp.key] = kvp.value;
-          return query;
-        }, {});
-    },
-    changeSub() {
-      //добавилось для трекеров
-      let subs = this.getQuery(window.location.search);
-      let hiddenBinomID = document.getElementById("binom");
-      if (!subs.sub1 && hiddenBinomID && hiddenBinomID.value !== "{clickid}") {
-        this.QUERY.sub1 = hiddenBinomID.value;
-      }
-    },
   },
   mounted() {
-    this.changeSub();
-    if (!this.getQuery(window.location.search).click_id) {
-      let data = JSON.stringify(this.QUERY);
-      postSubs(data)
-        .then(
-          (result) => {
-            this.click_id = result.data["click_id"];
-          },
-          (err) => {
-            console.log(err);
-            this.click_id = null;
-          }
-        )
-        .catch((err) => {
-          console.log(err);
-          this.click_id = null;
-        });
-    } else {
-      this.click_id = this.QUERY.click_id;
-    }
+    window.addEventListener('load', () => {
+  if ( window.mbp ) {
+    window.mbp.pixel.send('click').then(response => {
+      this.click_id = response;
+    })
+  }
+})
   },
 };
 </script>
@@ -185,10 +149,8 @@ body {
 }
 
 #app {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 32px;
 }
 
 p {

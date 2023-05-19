@@ -10,12 +10,15 @@
       <span class="title">{{ text.title }}</span>
       <span class="results__special">{{ text.special }}</span>
       <span class="results__info">{{ text.suddenly }}</span>
-      <p class="results__code">
-        KODEN FÖR DITT RESULTAT ÄR {{sumCode}}
-      </p>
+      <p class="results__code">KODEN FÖR DITT RESULTAT ÄR {{ sumCode }}</p>
       <span class="results__hurry">{{ text.hurry }}</span>
       <span class="results__info">{{ text.info }}</span>
-      <a class="btn active callBtn" v-metrics :href="buttonLink" @click="sendClick()">
+      <a
+        class="btn active callBtn"
+        v-metrics
+        :href="buttonLink"
+        @click="sendClick()"
+      >
         {{ text.button }}
       </a>
     </div>
@@ -23,16 +26,15 @@
 </template>
 
 <script>
-import { results } from '@/text/results';
-import { sendCLick } from '@/services/landAPI';
+import { results } from "@/text/results";
 
 export default {
-  name: 'Results.vue',
-  props: ['device', 'clickID','sumCode'],
+  name: "Results.vue",
+  props: ["device", "clickID", "sumCode"],
   data() {
     return {
       text: results,
-      time: '',
+      time: "",
       messageText: this.checkId(),
       buttonLink: null,
       smsFlow: null,
@@ -40,7 +42,7 @@ export default {
   },
   methods: {
     fmtMSS(s) {
-      return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s;
+      return (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + s;
     },
     timeExpire() {
       let time = 240;
@@ -56,18 +58,14 @@ export default {
       }, 1000);
     },
     nextPageStart() {
-      this.$emit('nextPageStart');
+      this.$emit("nextPageStart");
     },
     checkId() {
-      let smsText = '';
+      let smsText = "";
       if (this.clickID) {
-        smsText =
-          'IQT ' +
-          this.clickID +
-          ' Ich mochte mehr Informationen!';
+        smsText = "IQT " + this.clickID + " Ich mochte mehr Informationen!";
       } else {
-        smsText =
-          'IQT Ich mochte mehr Informationen!';
+        smsText = "IQT Ich mochte mehr Informationen!";
       }
       return smsText;
     },
@@ -75,25 +73,27 @@ export default {
       this.buttonLink = href;
     },
     checkOperator() {
-      this.buttonCreator('sms', this.smsBuilder());
+      this.buttonCreator("sms", this.smsBuilder());
     },
     smsBuilder() {
       var smsTemplate;
       switch (this.device) {
-        case 'iOS':
-          smsTemplate = 'sms:595&body=' + encodeURI(this.messageText);
+        case "iOS":
+          smsTemplate = "sms:595&body=" + encodeURI(this.messageText);
           break;
-        case 'Android':
-          smsTemplate = 'sms:595?body=' + encodeURI(this.messageText);
+        case "Android":
+          smsTemplate = "sms:595?body=" + encodeURI(this.messageText);
           break;
         default:
-          smsTemplate = '#';
+          smsTemplate = "#";
           break;
       }
       return smsTemplate;
     },
     sendClick() {
-      sendCLick(this.clickID);
+      if (window.mbp) {
+        window.mbp.pixel.send("cta");
+      }
     },
   },
   mounted() {
@@ -131,7 +131,6 @@ export default {
   .wrapper {
     padding-top: 30px;
     padding-bottom: 40px;
-    min-height: 100vh;
     @media (max-height: 736px), (max-width: 414px) {
       padding-top: 15px;
     }
@@ -160,12 +159,12 @@ export default {
       width: 280px;
     }
     &:before {
-      content: '';
+      content: "";
       display: block;
       margin-right: 10px;
       width: 39px;
       height: 39px;
-      background-image: url('../assets/static/email.svg');
+      background-image: url("../assets/static/email.svg");
       background-repeat: no-repeat;
     }
     &.active {
@@ -185,7 +184,7 @@ export default {
       font-size: 24px;
       line-height: 30px;
     }
-    @media(max-height: 568px) and (max-width: 320px) {
+    @media (max-height: 568px) and (max-width: 320px) {
       font-size: 20px;
       line-height: 26px;
     }
@@ -220,7 +219,7 @@ export default {
       font-size: 20px;
       line-height: 24px;
     }
-    @media(max-height: 568px) and (max-width: 320px) {
+    @media (max-height: 568px) and (max-width: 320px) {
       margin-bottom: 10px;
       font-size: 16px;
       line-height: 20px;
@@ -236,7 +235,7 @@ export default {
     @media (max-height: 736px), (max-width: 414px) {
       margin-bottom: 15px;
     }
-    @media(max-height: 568px) and (max-width: 320px) {
+    @media (max-height: 568px) and (max-width: 320px) {
       font-size: 15px;
       line-height: 19px;
     }
