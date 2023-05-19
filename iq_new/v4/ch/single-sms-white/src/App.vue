@@ -19,6 +19,7 @@
         :sumCode="sumCode"
       ></Results>
     </div>
+    <Footer v-if="page === 'start' || page === 'results'" />
   </div>
 </template>
 
@@ -28,6 +29,7 @@ import Test from "@/components/Test";
 import Calculate from "@/components/Calculate";
 import Results from "@/components/Results";
 import { postSubs } from "@/services/landAPI";
+import Footer from '@/text/Footer';
 
 export default {
   name: "App",
@@ -36,6 +38,7 @@ export default {
     Test,
     Calculate,
     Results,
+    Footer
   },
   data() {
     return {
@@ -160,8 +163,12 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 
+html,
 body {
-  min-height: 100vh;
+  height: 100%;
+}
+
+body {
   font-size: 16px;
   min-width: 320px;
   position: relative;
@@ -175,6 +182,13 @@ body {
     border: #666 1px solid;
     outline: none;
   }
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 32px;
 }
 
 p {
@@ -205,8 +219,9 @@ h2 {
 
 .container {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
   background-position: calc(50% + 49px) calc(50% + 4px);
   .content {
     flex: 1 0 auto;
@@ -244,7 +259,7 @@ h2 {
   min-width: 280px;
   max-width: 355px;
   margin: 0 auto;
-  padding: 0 20px 15px;
+  padding: 15px 20px 15px;
   @media (max-height: 600px) and (max-width: 360px) {
     max-width: 100%;
   }
