@@ -19,6 +19,7 @@
         :sumCode="sumCode"
       ></Results>
     </div>
+    <Footer v-if="page === 'start' || page === 'results'" />
   </div>
 </template>
 
@@ -27,7 +28,7 @@ import Start from "@/components/Start";
 import Test from "@/components/Test";
 import Calculate from "@/components/Calculate";
 import Results from "@/components/Results";
-import { postSubs } from "@/services/landAPI";
+import Footer from '@/text/Footer';
 
 export default {
   name: "App",
@@ -36,12 +37,12 @@ export default {
     Test,
     Calculate,
     Results,
+    Footer
   },
   data() {
     return {
       page: "start",
       click_id: null,
-      QUERY: this.getQuery(window.location.search) || null,
       sumCode: null,
     };
   },
@@ -103,49 +104,15 @@ export default {
     nextPageStart() {
       this.page = "start";
     },
-    getQuery(string) {
-      return string
-        .slice(1)
-        .split("&")
-        .map((queryParam) => {
-          let kvp = queryParam.split("=");
-          return { key: kvp[0], value: kvp[1] };
-        })
-        .reduce((query, kvp) => {
-          query[kvp.key] = kvp.value;
-          return query;
-        }, {});
-    },
-    changeSub() {
-      //добавилось для трекеров
-      let subs = this.getQuery(window.location.search);
-      let hiddenBinomID = document.getElementById("binom");
-      if (!subs.sub1 && hiddenBinomID && hiddenBinomID.value !== "{clickid}") {
-        this.QUERY.sub1 = hiddenBinomID.value;
-      }
-    },
   },
   mounted() {
-    this.changeSub();
-    if (!this.getQuery(window.location.search).click_id) {
-      let data = JSON.stringify(this.QUERY);
-      postSubs(data)
-        .then(
-          (result) => {
-            this.click_id = result.data["click_id"];
-          },
-          (err) => {
-            console.log(err);
-            this.click_id = null;
-          }
-        )
-        .catch((err) => {
-          console.log(err);
-          this.click_id = null;
-        });
-    } else {
-      this.click_id = this.QUERY.click_id;
-    }
+    window.addEventListener('load', () => {
+  if ( window.mbp ) {
+    window.mbp.pixel.send('click').then(response => {
+      this.click_id = response;
+    })
+  }
+})
   },
 };
 </script>
@@ -160,8 +127,12 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 
+html,
 body {
-  min-height: 100vh;
+  height: 100%;
+}
+
+body {
   font-size: 16px;
   min-width: 320px;
   position: relative;
@@ -175,6 +146,11 @@ body {
     border: #666 1px solid;
     outline: none;
   }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
 }
 
 p {
@@ -205,8 +181,9 @@ h2 {
 
 .container {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
   background-position: calc(50% + 49px) calc(50% + 4px);
   .content {
     flex: 1 0 auto;
@@ -244,7 +221,7 @@ h2 {
   min-width: 280px;
   max-width: 355px;
   margin: 0 auto;
-  padding: 0 20px 15px;
+  padding: 15px 20px 15px;
   @media (max-height: 600px) and (max-width: 360px) {
     max-width: 100%;
   }

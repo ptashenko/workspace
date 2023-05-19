@@ -8,6 +8,18 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
     <%= require('html-loader!../src/static/tracker_code.php') %>
+    <script type="text/javascript">
+	  !function(win, doc, tag) {
+          let searchParams = (new URLSearchParams(window.location.search)).get('f')
+          const F = searchParams ? searchParams : 'UW-K-2iC4ug';
+		  window.mbp = { f: F, b: '{clickid}', k: '{subid}' }
+		  let el_tag = doc.createElement(tag)
+		  el_tag.async = 1;
+		  el_tag.src = '<%= VUE_APP_LINK %>/event/js?v=' + mbp.f;
+		  let bd = doc.getElementsByTagName(tag)[0]
+		  bd.parentNode.append(el_tag);
+	  } (window, document, "script");
+</script>
   </head>
   <body>
     <%= require('html-loader!../src/static/fb_html_pixel.php') %>

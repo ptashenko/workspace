@@ -12,8 +12,8 @@
           {{ text.button }}
         </button>
       </div>
-      <Copyright />
     </div>
+
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
     padding-top: 20px;
   }
   .copyright {
-    margin-top: 20px;
+    margin-top: 90px;
     font-size: 11px;
     text-align: center;
     color: grey;
