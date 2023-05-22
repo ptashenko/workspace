@@ -1,0 +1,26 @@
+<%= require('html-loader!../src/static/vars.php') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <%= require('html-loader!../src/static/tracker_code.php') %>
+    <script type="text/javascript">
+      !(function (win, doc, tag) {
+        window.mbp = { f: "UW-M-0Pp0rH", b: "{clickid}", k: "{subid}" };
+        let el_tag = doc.createElement(tag);
+        el_tag.async = 1;
+        el_tag.src = "<%= VUE_APP_LINK %>/event/js?v=" + mbp.f;
+        let bd = doc.getElementsByTagName(tag)[0];
+        bd.parentNode.append(el_tag);
+      })(window, document, "script");
+    </script>
+  </head>
+  <body>
+    <%= require('html-loader!../src/static/fb_html_pixel.php') %>
+    <div id="app"></div>
+  </body>
+</html>

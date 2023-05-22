@@ -1,0 +1,1 @@
+https://horoscop.life/hu/content-page-horo

@@ -1,0 +1,1 @@
+https://finomania1.com/ro/expfinwhite_gybr/

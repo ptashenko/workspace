@@ -1,0 +1,1 @@
+https://questomania.net/ro/seller_page-iq/send-sms/ (нет проверки click_id)

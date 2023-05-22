@@ -1,0 +1,1 @@
+https://finomania.net/ro/quiz_white_financial_experiment

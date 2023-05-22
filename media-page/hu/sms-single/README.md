@@ -1,0 +1,1 @@
+https://finomania.net/hu/seller_page/send-sms/

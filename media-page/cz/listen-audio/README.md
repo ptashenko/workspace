@@ -1,0 +1,1 @@
+https://horoscop.life/cz/content-page-horo

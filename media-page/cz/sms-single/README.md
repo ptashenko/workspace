@@ -1,0 +1,1 @@
+https://horoscop.life/cz/popup/horo/sms (нет проверки click_id)
