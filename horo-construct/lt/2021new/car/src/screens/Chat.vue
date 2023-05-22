@@ -6,14 +6,17 @@
           <div class="header-avatar">
             <img
               class="header__avatar avatar__img"
-              src="../assets/img/logo.png"
+              src="../assets/img/person-goroskop.png"
               alt
             />
           </div>
           <div class="header-text">
             <div class="header-text__name">{{ person }}</div>
-            <!--                    <div class="header-text__who">Astrolog Certificat</div>-->
-            <div class="header-text__answers">Prognozės tikslumas: 97%</div>
+            <div class="header-text__who">Asmeninis horoskopas</div>
+            <div class="header-text__who">Sertifikuota astrologė</div>
+            <div class="header-text__answers">
+              Atsakymai: 9,342 - Prognozių tikslumas: 97%
+            </div>
           </div>
         </div>
       </div>
@@ -86,38 +89,38 @@
               </span>
             </span>
           </div>
-          <div
-            class="callButton animated pulse infinite"
-            v-if="midx === messages.length"
-          >
-            <button
-              class="button callBtn"
-              v-show="!phoneNumber"
-              @click.prevent="getPhoneNumber"
-              v-metrics
+
+          <div class="message" v-if="midx === messages.length">
+            <span class="message__text"
+              >Dėl didelio lankytojų skaičiaus šis įrašas bus ištrintas po
+              <b> {{ time }} </b></span
             >
-              <img class="button__icon" src="../assets/img/call-res.svg" alt />
-              <span class="button__text"> Skambinti ir klausytis </span>
-            </button>
-            <a
-              class="button"
-              @click="
-                sendClick();
-                return true;
-              "
-              v-show="phoneNumber"
-              :href="'tel:' + phoneNumber"
-            >
-              <img class="button__icon" src="../assets/img/call-res.svg" alt />
-              <span class="button__text"> Skambinti ir klausytis </span>
-            </a>
           </div>
+
+          <div v-if="midx === messages.length">
+            <CallButton
+              :sendClick="sendClick"
+              :getPhoneNumber="getPhoneNumber"
+              :phoneNumber="phoneNumber"
+            />
+            <Comments
+              :sendClick="sendClick"
+              :getPhoneNumber="getPhoneNumber"
+              :phoneNumber="phoneNumber"
+            />
+            <CallButton
+              :sendClick="sendClick"
+              :getPhoneNumber="getPhoneNumber"
+              :phoneNumber="phoneNumber"
+            />
+          </div>
+
           <div class="typing" v-if="typing">
-            {{ persons }} rašo
+            {{ person }} rašo
             <span class="dot" v-for="(dot, index) in 3" :key="index"></span>
           </div>
           <div class="typing rec" v-if="recs">
-            <p>{{ persons }} įrašo garso pranešimą</p>
+            <p>{{ person }} įrašo garso pranešimą</p>
             <div class="pr_bt"></div>
             <div class="pr_bt"></div>
             <div class="pr_bt"></div>
@@ -133,6 +136,7 @@
     />
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 @import "../assets/animations.css";
@@ -246,45 +250,6 @@
 
   &::-webkit-scrollbar {
     width: 0px;
-  }
-}
-
-.callButton {
-  text-align: center;
-  margin: 16px auto;
-  width: 90%;
-}
-
-.button {
-  margin: 0 auto;
-  display: flex;
-  outline: none;
-  border: none;
-  background: #483177;
-  padding-left: 20px;
-  border-radius: 50px;
-  width: 100%;
-  height: 54px;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-
-  &__icon {
-    position: absolute;
-    top: 9px;
-    left: 15px;
-    margin-right: 20px;
-    animation: tada 1.5s infinite;
-  }
-
-  &__text {
-    text-align: center;
-    text-transform: uppercase;
-    color: #ffffff;
-    padding-left: 20px;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    font-size: 18px;
   }
 }
 
@@ -610,6 +575,9 @@
 
 <script>
 import Footer from "../components/Footer.vue";
+import Comments from "../components/Comments.vue";
+import CallButton from "../components/CallButton.vue";
+
 import messages from "../mixins/messages";
 
 export default {
@@ -633,10 +601,13 @@ export default {
       recs: false,
       defaultPhoneNumber: "+37090097008",
       phoneNumber: null,
+      currentTime: 90,
+      timer: null,
+      time: "1:30",
     };
   },
-  components: { Footer },
-  props: ["person", "persons", "footerObj", "footerGeo"],
+  components: { CallButton, Comments, Footer },
+  props: ["person", "footerObj", "footerGeo"],
   mixins: [messages],
   methods: {
     scroll() {
@@ -690,6 +661,9 @@ export default {
             this.messages[this.midx - 1].stop
           )
             clearInterval(l), (this.chatForm = true), (this.typing = false);
+            if (this.midx === this.messages.length) {
+            this.startTimer();
+          }
         } else if (this.messages[this.midx].type == "question") {
           this.messages[this.midx].time = this.sendedTime();
           this.delivered.push(this.messages[this.midx]);
@@ -699,6 +673,26 @@ export default {
           clearInterval(l), (this.chatForm = true), (this.typing = false);
         }
       }, 7000);
+    },
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.currentTime--;
+      }, 1000);
+    },
+    stopTimer() {
+      clearTimeout(this.timer);
+    },
+    str_pad_left(string, pad, length) {
+      return (new Array(length + 1).join(pad) + string).slice(-length);
+    },
+    setTime() {
+      let minutes = Math.floor(this.currentTime / 60);
+      let seconds = this.currentTime - minutes * 60;
+      return (
+        this.str_pad_left(minutes, "0", 2) +
+        ":" +
+        this.str_pad_left(seconds, "0", 2)
+      );
     },
     genBirthDay(min, max) {
       let array = [];
@@ -769,12 +763,20 @@ export default {
       }
     },
   },
+  watch: {
+    currentTime(time) {
+      this.time = this.setTime();
+      if (time === 0) {
+        this.stopTimer();
+      }
+    },
+  },
   mounted() {
     this.chat();
     this.days = this.genBirthDay(1, 31);
     this.months = this.genBirthDay(1, 12);
     this.years = this.genBirthDay(
-      1940,
+      1900,
       new Date().getFullYear() - 18
     ).reverse();
     window.onresize = () => (this.innerHeight = window.innerHeight);

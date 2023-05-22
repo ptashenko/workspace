@@ -17,8 +17,7 @@ export default {
   name: "app",
   data() {
     return {
-      person: "Geriausi Lietuvos astrologai ir ekstrasensai",
-      persons: "Šarlota Hrubá",
+      person: "Asmeninis horoskopas",
       footerObj: null,
       footerGeo: null,
     };

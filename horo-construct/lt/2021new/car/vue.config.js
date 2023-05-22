@@ -7,7 +7,7 @@ module.exports = {
             config
                 .plugin('html')
                 .tap(args => {
-                    args[0].title = 'Find out your future'
+                    args[0].title = 'Asmeninis horoskopas'
                     args[0].minify = false
                     args[0].minify.removeAttributeQuotes = false
                     return args
