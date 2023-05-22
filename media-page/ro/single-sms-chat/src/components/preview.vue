@@ -23,20 +23,9 @@
         <a :href="smsBuilder" class="button" @click="sendClick()" v-metrics>Obține rezultatul</a>
       </div>
       <div class="copy">
-        <p>
-          Termeni și condiții: acesta este un serviciu de divertisment si timp liber cu acces cu plata. Cost per minut:
-          1.7 euro + tva. Prin utilizarea acestui serviciu confirmati că ati împlinit vârsta de 16 ani, aveti acordul
-          titularului cartelei si sunteti de acord cu acesti termeni si conditii. Prin apasarea tastei, de ex. “Obtineti
-          serviciu/Suna/Asculta/etc” veti fi redirectionat catre casuta de apeluri de unde puteti initia serviciul. Prin
-          accesarea serviciului sunteti de acord ca puteti primi mesaje de informare de la furnizorul serviciului legate
-          de serviciile de divertisment oferite si noutati. In cazul utilizarii serviciului datele dvs. – Ex. numarul de
-          telefon, vor fi procesate doar in scopurile de mai sus. Furnizor serviciu: GMTech Media OÜ; Reg № 16350328;
-          adresa: Harju maakond, Tallinn, Lasnamäe linnaosa, Pae tn 21-25, 11415, Estonia. <a
-            href="mailto:support@gmtechmedia.com">support@gmtechmedia.com</a>. Info serviciu voce: 0318260010,
-          luni-vineri, 9:00-18:00.
-          <br>
-          <span class="noaff">Affiliate: mobstra.com</span>
-        </p>
+        <span>
+          *Termeni si conditii serviciu PROFIT cu plata unica prin SMS: Descriere – serviciul ofera sfaturi financiare si idei de afaceri sub forma de inregistrare audio sub forma de inregistrare audio si text. Apasand pe butonul din pagina de acces "CONTINUA/etc" veti fi redirectionat catre casuta de mesaje unde veti putea efectua comanda - cost total comanda – 3EUR+TVA – Orange, Vodafone, Telekom, DIGI Mobil (format din 0.05EUR+TVA mesaj trimis la numarul scurt 1442 si 2.95EUR+TVA mesaj de taxare primit de la numarul scurt – taxarea in Vodafone se face de pe numarul 23133 si in Telekom de pe numarul 22442). O comanda ofera acces nelimitat la continut timp de 7 zile. Prin comanda serviciului utilizatorul este de acord neconditionat cu acesti termeni si conditii , inclusiv cu <a href="./conditiileGDPR.php">conditiile GDPR</a> a serviciului si confirma ca are acordul titularului legal al cartelei SIM pentru comandarea acestuia. Relatii clienti-telefon: 0318260010, tarif normal, email: href="mailto: <a href="mailto:clientisva@gmail.com">clientisva@gmail.com</a>, orar luni-vineri 9:00-18:00 – termen solutionare cereri 24 ore lucratoare sau mai mult, in functie de situatie. Furnizor serviciu: GMTech Media OÜ, with headoffice in Estonia, Harju maakond, Tallinn, Lasnamäe linnaosa, Pae tn 21-25, 11415
+        </span>
       </div>
     </div>
   </section>
