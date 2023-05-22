@@ -20,7 +20,7 @@
       </div>
       <div class="button-wrap">
         <img src="../assets/img/email.svg" alt="">
-        <a :href="smsTemplate" class="button" @click="sendClick()" v-metrics>Obține rezultatul</a>
+        <a :href="smsBuilder" class="button" @click="sendClick()" v-metrics>Obține rezultatul</a>
       </div>
       <div class="copy">
         <p>
@@ -49,11 +49,17 @@ export default {
   data: function () {
     return {
       smsTemplate: '#',
-      QUERY: this.getQuery(window.location.search),
-      clickID: ''
+      clickID: null
     }
   },
   methods: {
+    sendClick() {
+      if (window.mbp) {
+        window.mbp.pixel.send('cta')
+      }
+    },
+  },
+  computed: {
     checkDevice: function () {
       let MobileUserAgent = navigator.userAgent || navigator.vendor || window.opera;
       let isTablet = /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(MobileUserAgent.toLowerCase());
@@ -70,46 +76,28 @@ export default {
       }
       return device;
     },
-    sendClick() {
-      if (window.mbp) {
-        window.mbp.pixel.send('cta')
-      }
+    messageText() {
+      return 'PROFIT ' + this.clickID + '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDoresc să obțin informații detaliate!';
     },
-    getQuery(string) {
-      return string.slice(1).split("&")
-        .map((queryParam) => {
-          let kvp = queryParam.split("=");
-          return { key: kvp[0], value: kvp[1] }
-        })
-        .reduce((query, kvp) => {
-          query[kvp.key] = kvp.value;
-          return query
-        }, {})
-    }
-  },
-  created() {
-    if (this.QUERY.click_id) {
-      this.clickID = this.QUERY.click_id
-    } else {
-      this.clickID = '';
-    }
+    smsBuilder() {
+      let smsTemplate = '';
 
-    let messageText = 'PROFIT ' + this.clickID + '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDoresc să obțin informații detaliate!';
-      let userDevice = this.checkDevice();
-
-      if (userDevice === 'iOS') {
-        this.smsTemplate = 'sms:1442&body=' + encodeURI(messageText);
-      } else if (userDevice === 'Android') {
-        this.smsTemplate = 'sms:1442?body=' + encodeURI(messageText);
+      if (this.checkDevice === 'iOS') {
+        smsTemplate = 'sms:1442&body=' + encodeURI(this.messageText);
+      } else if (this.checkDevice === 'Android') {
+        smsTemplate = 'sms:1442?body=' + encodeURI(this.messageText);
       } else {
-        this.smsTemplate = '#';
+        smsTemplate = '#';
       }
+
+      return smsTemplate;
+    },
   },
   mounted() {
     window.addEventListener('load', () => {
       if (window.mbp) {
         window.mbp.pixel.send('click').then(response => {
-          this.click_id = response;
+          this.clickID = response;
         })
       }
     })
