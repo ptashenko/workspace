@@ -94,7 +94,7 @@ export default {
       this.clickID = '';
     }
 
-    let messageText = 'PROFIT ' + this.click_id + '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDoresc să obțin informații detaliate!';
+    let messageText = 'PROFIT ' + this.clickID + '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDoresc să obțin informații detaliate!';
       let userDevice = this.checkDevice();
 
       if (userDevice === 'iOS') {
