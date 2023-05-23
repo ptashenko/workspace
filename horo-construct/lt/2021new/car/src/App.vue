@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <div class="container">
-      <Chat :person="person" />
-    </div>
-    <Footer :footerObj="footerObj" :footerGeo="footerGeo" />
+    <Chat :view.sync="view" :person="person" />
+    <Footer v-if="footerObj" :view="view" :footerObj="footerObj" :footerGeo="footerGeo" />
   </div>
 </template>
 
@@ -19,6 +17,7 @@ export default {
       person: "Asmeninis horoskopas",
       footerObj: null,
       footerGeo: null,
+      view: false
     };
   },
   components: {
@@ -65,7 +64,7 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
   height: 100%;
 }
 

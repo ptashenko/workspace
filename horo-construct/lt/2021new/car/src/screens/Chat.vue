@@ -86,6 +86,7 @@
 .void {
   position: relative;
   height: 100%;
+  flex-shrink: 0;
 }
 
 .chat {
@@ -549,7 +550,7 @@ export default {
     };
   },
   components: { CallButton, Comments },
-  props: ["person"],
+  props: ["person", "view"],
   mixins: [messages],
   methods: {
     scroll() {
@@ -573,9 +574,7 @@ export default {
       this.idx++;
       this.scroll();
 
-      setTimeout(() => {
-        this.chat();
-      }, 7000);
+      this.chat();
     },
     chat() {
       this.typing = true;
@@ -717,6 +716,11 @@ export default {
     pickedYear(newYear) {
       window.scrollTo(0, 0);
     },
+    midx(newValue) {
+      if (newValue === this.messages.length) {
+        this.$emit('update:view', true)
+      }
+    }
   },
   mounted() {
     this.chat();

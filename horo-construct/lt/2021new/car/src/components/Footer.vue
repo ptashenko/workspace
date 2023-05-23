@@ -1,11 +1,7 @@
 <template>
   <footer
     class="footer"
-    v-html="
-      !view
-        ? footerObj.main_footer[footerGeo]
-        : footerObj.second_footer[footerGeo]
-    "
+    v-html="!view ? footerObj.main_footer[footerGeo] : footerObj.second_footer[footerGeo]"
   ></footer>
 </template>
 
