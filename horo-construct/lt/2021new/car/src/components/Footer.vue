@@ -11,10 +11,6 @@
 
 <style lang="scss">
 .footer {
-  position: relative;
-  top: -25px;
-  width: 100%;
-
   p {
     font-size: 11px;
     text-align: center;
