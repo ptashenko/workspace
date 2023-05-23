@@ -770,6 +770,13 @@ export default {
         this.stopTimer();
       }
     },
+    pickedMonth(newMonth) {
+      if (newMonth === 2) {
+        this.days = this.genBirthDay(1, 28);
+      } else {
+        this.days = this.genBirthDay(1, 31);
+      }
+    }
   },
   mounted() {
     this.chat();
