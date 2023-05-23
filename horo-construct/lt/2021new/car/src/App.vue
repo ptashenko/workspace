@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-    <Chat
-      :person="person"
-      :persons="persons"
-      :footerObj="footerObj"
-      :footerGeo="footerGeo"
-    />
+    <Chat :view.sync="view" :person="person" />
+    <Footer v-if="footerObj" :view="view" :footerObj="footerObj" :footerGeo="footerGeo" />
   </div>
 </template>
 
 <script>
 import "normalize.css";
 import Chat from "./screens/Chat";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
@@ -20,10 +17,12 @@ export default {
       person: "Asmeninis horoskopas",
       footerObj: null,
       footerGeo: null,
+      view: false
     };
   },
   components: {
     Chat,
+    Footer
   },
   methods: {
     getFooter() {
@@ -62,6 +61,13 @@ body {
   background: #ccc9d2;
 }
 
+#app {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  height: 100%;
+}
+
 html {
   &.noaff {
     span {
@@ -72,7 +78,9 @@ html {
   }
 }
 
-#app {
+.container {
+  overflow: scroll;
   height: 100%;
+  flex-shrink: 0;
 }
 </style>

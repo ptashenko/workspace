@@ -1,20 +1,12 @@
 <template>
   <footer
     class="footer"
-    v-html="
-      !view
-        ? footerObj.main_footer[footerGeo]
-        : footerObj.second_footer[footerGeo]
-    "
+    v-html="!view ? footerObj.main_footer[footerGeo] : footerObj.second_footer[footerGeo]"
   ></footer>
 </template>
 
 <style lang="scss">
 .footer {
-  position: relative;
-  top: -25px;
-  width: 100%;
-
   p {
     font-size: 11px;
     text-align: center;

@@ -4,11 +4,7 @@
       <div class="header">
         <div class="header-wrap">
           <div class="header-avatar">
-            <img
-              class="header__avatar avatar__img"
-              src="../assets/img/person-goroskop.png"
-              alt
-            />
+            <img class="header__avatar avatar__img" src="../assets/img/person-goroskop.png" alt />
           </div>
           <div class="header-text">
             <div class="header-text__name">{{ person }}</div>
@@ -22,63 +18,31 @@
       </div>
       <div class="main">
         <div class="blow" ref="blow">
-          <div
-            class="message"
-            v-for="(message, index) in delivered"
-            :key="index"
-            :class="{ 'message--user': message.user }"
-          >
+          <div class="message" v-for="(message, index) in delivered" :key="index"
+            :class="{ 'message--user': message.user }">
             <span class="message__text" v-html="message.text"></span>
-            <div
-              class="container-button"
-              v-show="message.type === 'question' && index === idx - 1"
-            >
-              <button
-                class="container__button"
-                v-for="(answer, id) in message.answers"
-                :key="id"
-                :class="{ 'message--user': message.user }"
-                @click="next(answer, message)"
-                v-html="answer.answer"
-              ></button>
+            <div class="container-button" v-show="message.type === 'question' && index === idx - 1">
+              <button class="container__button" v-for="(answer, id) in message.answers" :key="id"
+                :class="{ 'message--user': message.user }" @click="next(answer, message)" v-html="answer.answer"></button>
             </div>
-            <div
-              class="date"
-              @change="checkBirth"
-              v-if="message.type === 'date'"
-            >
-              <select
-                class="date__item"
-                :class="{ 'date__item--active': pickedDay }"
-                v-model.trim="pickedDay"
-                :disabled="isBlock"
-              >
+            <div class="date" @change="checkBirth" v-if="message.type === 'date'">
+              <select class="date__item" :class="{ 'date__item--active': pickedDay }" v-model.trim="pickedDay"
+                :disabled="isBlock">
                 <option value>Diena</option>
                 <option v-for="day in days" :value="day">
-                  {{ day < 10 ? "0" + day : day }}
-                </option>
+                  {{ day < 10 ? "0" + day : day }} </option>
               </select>
-              <select
-                class="date__item"
-                :class="{ 'date__item--active': pickedMonth }"
-                v-model="pickedMonth"
-                :disabled="isBlock"
-              >
+              <select class="date__item" :class="{ 'date__item--active': pickedMonth }" v-model="pickedMonth"
+                :disabled="isBlock">
                 <option value>Mėnuo</option>
                 <option v-for="month in months" :value="month">
-                  {{ month < 10 ? "0" + month : month }}
-                </option>
+                  {{ month < 10 ? "0" + month : month }} </option>
               </select>
-              <select
-                class="date__item"
-                :class="{ 'date__item--active': pickedYear }"
-                v-model="pickedYear"
-                :disabled="isBlock"
-              >
+              <select class="date__item" :class="{ 'date__item--active': pickedYear }" v-model="pickedYear"
+                :disabled="isBlock">
                 <option value>Metai</option>
                 <option v-for="year in years" :value="year">
-                  {{ year < 10 ? "0" + year : year }}
-                </option>
+                  {{ year < 10 ? "0" + year : year }} </option>
               </select>
             </div>
 
@@ -91,49 +55,23 @@
           </div>
 
           <div class="message" v-if="midx === messages.length">
-            <span class="message__text"
-              >Dėl didelio lankytojų skaičiaus šis įrašas bus ištrintas po
-              <b> {{ time }} </b></span
-            >
+            <span class="message__text">Dėl didelio lankytojų skaičiaus šis įrašas bus ištrintas po
+              <b> {{ time }} </b></span>
           </div>
 
           <div v-if="midx === messages.length">
-            <CallButton
-              :sendClick="sendClick"
-              :getPhoneNumber="getPhoneNumber"
-              :phoneNumber="phoneNumber"
-            />
-            <Comments
-              :sendClick="sendClick"
-              :getPhoneNumber="getPhoneNumber"
-              :phoneNumber="phoneNumber"
-            />
-            <CallButton
-              :sendClick="sendClick"
-              :getPhoneNumber="getPhoneNumber"
-              :phoneNumber="phoneNumber"
-            />
+            <CallButton :sendClick="sendClick" :getPhoneNumber="getPhoneNumber" :phoneNumber="phoneNumber" />
+            <Comments :sendClick="sendClick" :getPhoneNumber="getPhoneNumber" :phoneNumber="phoneNumber" />
+            <CallButton :sendClick="sendClick" :getPhoneNumber="getPhoneNumber" :phoneNumber="phoneNumber" />
           </div>
 
           <div class="typing" v-if="typing">
             {{ person }} rašo
             <span class="dot" v-for="(dot, index) in 3" :key="index"></span>
           </div>
-          <div class="typing rec" v-if="recs">
-            <p>{{ person }} įrašo garso pranešimą</p>
-            <div class="pr_bt"></div>
-            <div class="pr_bt"></div>
-            <div class="pr_bt"></div>
-          </div>
         </div>
       </div>
     </section>
-    <Footer
-      :view="midx === messages.length"
-      v-if="footerObj"
-      :footerObj="footerObj"
-      :footerGeo="footerGeo"
-    />
   </div>
 </template>
 
@@ -148,6 +86,7 @@
 .void {
   position: relative;
   height: 100%;
+  flex-shrink: 0;
 }
 
 .chat {
@@ -224,7 +163,7 @@
   max-width: 400px;
   margin: 0 auto;
   height: 100%;
-  padding-bottom: 35px;
+  padding-bottom: 10px;
 
   &-content {
     &-timer {
@@ -533,11 +472,13 @@
   }
 
   @keyframes activity__recording-audio {
+
     0%,
     to {
       opacity: 0.2;
       transform: scaleY(0.45);
     }
+
     30% {
       opacity: 1;
       transform: scaleY(1);
@@ -549,18 +490,22 @@
   0% {
     transform: rotateZ(0deg);
   }
+
   100% {
     transform: rotateZ(100deg);
   }
+
   50% {
     transform: rotateZ(-100deg);
   }
+
   0% {
     transform: rotateZ(0deg);
   }
 }
 
 @keyframes vawe {
+
   0%,
   60%,
   100% {
@@ -574,7 +519,6 @@
 </style>
 
 <script>
-import Footer from "../components/Footer.vue";
 import Comments from "../components/Comments.vue";
 import CallButton from "../components/CallButton.vue";
 
@@ -598,7 +542,6 @@ export default {
       delivered: [],
       innerHeight: window.innerHeight,
       isBlock: false,
-      recs: false,
       defaultPhoneNumber: "+37090097008",
       phoneNumber: null,
       currentTime: 90,
@@ -606,8 +549,8 @@ export default {
       time: "1:30",
     };
   },
-  components: { CallButton, Comments, Footer },
-  props: ["person", "footerObj", "footerGeo"],
+  components: { CallButton, Comments },
+  props: ["person", "view"],
   mixins: [messages],
   methods: {
     scroll() {
@@ -630,23 +573,12 @@ export default {
       });
       this.idx++;
       this.scroll();
-      if (this.messages[this.midx - 1].next == "recs") {
-        this.typing = false;
-        this.recs = true;
-        setTimeout(() => {
-          this.recs = false;
-        }, 10000);
-        setTimeout(() => {
-          this.chat();
-        }, 13000);
-      } else {
-        this.chat();
-      }
+
+      this.chat();
     },
     chat() {
       this.typing = true;
       this.chatForm = false;
-      this.recs = false;
       let l = setInterval(() => {
         if (this.messages[this.midx].type !== "question") {
           this.typing = true;
@@ -661,7 +593,7 @@ export default {
             this.messages[this.midx - 1].stop
           )
             clearInterval(l), (this.chatForm = true), (this.typing = false);
-            if (this.midx === this.messages.length) {
+          if (this.midx === this.messages.length) {
             this.startTimer();
           }
         } else if (this.messages[this.midx].type == "question") {
@@ -714,11 +646,9 @@ export default {
     },
     checkBirth() {
       if (this.pickedDay && this.pickedMonth && this.pickedYear) {
-        this.userBirthDay = `${
-          this.pickedDay < 10 ? "0" + this.pickedDay : this.pickedDay
-        }.${
-          this.pickedMonth < 10 ? "0" + this.pickedMonth : this.pickedMonth
-        }.${this.pickedYear}`;
+        this.userBirthDay = `${this.pickedDay < 10 ? "0" + this.pickedDay : this.pickedDay
+          }.${this.pickedMonth < 10 ? "0" + this.pickedMonth : this.pickedMonth
+          }.${this.pickedYear}`;
         this.isBlock = true;
         this.sendMessage(this.userBirthDay);
       }
@@ -727,9 +657,8 @@ export default {
       let date = new Date();
       let hours = date.getHours();
       let minutes = date.getMinutes();
-      return `${hours < 10 ? "0" + hours : hours}:${
-        minutes < 10 ? "0" + minutes : minutes
-      }`;
+      return `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes
+        }`;
     },
     createLink(tel) {
       let a = document.createElement("a");
@@ -770,11 +699,26 @@ export default {
         this.stopTimer();
       }
     },
+    pickedDay(newDay) {
+      window.scrollTo(0, 0);
+    },
     pickedMonth(newMonth) {
       if (newMonth === 2) {
+        if (this.pickedDay > 28) {
+          this.pickedDay = 28;
+        }
         this.days = this.genBirthDay(1, 28);
       } else {
         this.days = this.genBirthDay(1, 31);
+      }
+      window.scrollTo(0, 0);
+    },
+    pickedYear(newYear) {
+      window.scrollTo(0, 0);
+    },
+    midx(newValue) {
+      if (newValue === this.messages.length) {
+        this.$emit('update:view', true)
       }
     }
   },
@@ -784,7 +728,7 @@ export default {
     this.months = this.genBirthDay(1, 12);
     this.years = this.genBirthDay(
       1900,
-      new Date().getFullYear() - 18
+      new Date().getFullYear()
     ).reverse();
     window.onresize = () => (this.innerHeight = window.innerHeight);
   },
