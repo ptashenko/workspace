@@ -36,7 +36,7 @@
     props: ["sendClick", "getPhoneNumber", "phoneNumber", "callNumber"],
     methods: {
       dataLayer() {
-        dataLayer.push({'event': this.callNumber});
+        dataLayer.push({'event': 'call' + this.callNumber});
       }
     }
   };

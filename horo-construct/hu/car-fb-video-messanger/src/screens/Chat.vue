@@ -296,7 +296,7 @@ export default {
       this.idx++;
       this.scroll();
       this.chat();
-      dataLayer.push({ 'event': message.text });
+      dataLayer.push({ 'event': 'comment', 'value': message.text });
     },
     chat() {
       this.typing = true;
@@ -376,7 +376,7 @@ export default {
       this.scroll();
       this.chat();
       this.userMessage = "";
-      dataLayer.push({ 'event': message.text });
+      dataLayer.push({ 'event': 'comment', 'value': message.text });
     },
     checkBirth(message) {
       if (this.pickedDay && this.pickedMonth && this.pickedYear) {
@@ -473,7 +473,7 @@ export default {
     this.months = this.genBirthDay(1, 12);
     this.years = this.genBirthDay(1900, new Date().getFullYear()).reverse();
     window.onresize = () => (this.innerHeight = window.innerHeight);
-    dataLayer.push({ 'event': this.person.name });
+    dataLayer.push({ 'event': 'comment', 'value': this.person.name });
   },
 };
 </script>
