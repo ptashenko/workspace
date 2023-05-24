@@ -1,0 +1,1 @@
+https://horoscop.life/hu/fb_messenger_monthly_horoscope

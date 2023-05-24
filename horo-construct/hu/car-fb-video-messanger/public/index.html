@@ -1,0 +1,48 @@
+<%= require('html-loader!../src/static/vars.php') %>
+  <!DOCTYPE html>
+  <html lang="en" id="html">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i|Roboto:300,400,500,700,900&display=swap&subset=cyrillic"
+      rel="stylesheet" />
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <%= require('html-loader!../src/static/tracker_code.php') %>
+      <script type="text/javascript">
+        !(function (win, doc, tag) {
+          window.mbp = { f: 'UW-K-x9CoJp', b: "{clickid}", k: "{subid}" };
+          let el_tag = doc.createElement(tag);
+          el_tag.async = 1;
+          el_tag.src = "<%= VUE_APP_LINK %>/event/js?v=" + mbp.f;
+          let bd = doc.getElementsByTagName(tag)[0];
+          bd.parentNode.append(el_tag);
+        })(window, document, "script");
+      </script>
+      <!-- Google Tag Manager -->
+      <script>(function (w, d, s, l, i) {
+          w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+              new Date().getTime(), event: 'gtm.js'
+          }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PZ5VGNS');</script>
+      <!-- End Google Tag Manager -->
+  </head>
+
+  <body>
+    <%= require('html-loader!../src/static/fb_html_pixel.php') %>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ5VGNS" height="0" width="0"
+          style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+      <div id="app"></div>
+  </body>
+
+  </html>
