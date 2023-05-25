@@ -81,6 +81,9 @@ export default {
     @media (max-height: 700px) {
       min-height: 80px;
     }
+    @media (min-width: 1200px) {
+      min-height: 90px;
+    }
   }
   &--small {
     display: flex;

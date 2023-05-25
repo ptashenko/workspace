@@ -1,8 +1,8 @@
 <template>
   <div class="footer" ref="footer">
-      <span style="font-size: 13px">
-    Calls cost <b>£3/call + £3/min</b>, <br> plus a one off connection charge of <b>£3</b>, service is for entertainment only 18+.
-      </span>
+    <span style="font-size: 13px">
+      Calls cost <b>£3 per call, plus £3 per minute</b>, plus <b>£3</b> connection fee, service is for entertainment only 18+.
+    </span>
     <br />
       <br />
 

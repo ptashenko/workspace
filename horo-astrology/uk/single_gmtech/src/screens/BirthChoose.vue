@@ -114,6 +114,9 @@ export default {
     @media (max-height: 700px) {
       margin-bottom: 20px;
     }
+    @media (min-width: 1200px) {
+      margin-bottom: 20px;
+    }
   }
   &__city {
     margin: 104px auto 0;

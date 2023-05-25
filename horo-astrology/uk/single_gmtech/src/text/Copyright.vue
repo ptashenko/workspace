@@ -1,10 +1,8 @@
 <template>
   <p class="copyright" ref="copyright">
     <span style="font-size: 13px">
-        Calls cost <b>£3/call + £3/min</b>, plus a one off connection charge of
-    <b>£3</b>, service is for entertainment only 18+.
+      Calls cost <b>£3 per call, plus £3 per minute</b>, plus <b>£3</b> connection fee, service is for entertainment only 18+.
     </span>
-
     <br />
     Customer care
     <a href="mailto:support@gmtechmedia.com">support@gmtechmedia.com</a>
@@ -36,7 +34,7 @@ export default {
         $footer.style.paddingTop = "0px";
       } else {
         $footer.style.position = "absolute";
-        $footer.style.paddingTop = "20px";
+        $footer.style.paddingTop = "18px";
         $footer.style.top = "auto";
       }
     },
