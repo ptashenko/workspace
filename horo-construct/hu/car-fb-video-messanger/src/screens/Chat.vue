@@ -296,7 +296,6 @@ export default {
       this.idx++;
       this.scroll();
       this.chat();
-      dataLayer.push({ 'event': 'comment', 'value': message.text });
     },
     chat() {
       this.typing = true;
@@ -376,7 +375,6 @@ export default {
       this.scroll();
       this.chat();
       this.userMessage = "";
-      dataLayer.push({ 'event': 'comment', 'value': message.text });
     },
     checkBirth(message) {
       if (this.pickedDay && this.pickedMonth && this.pickedYear) {
