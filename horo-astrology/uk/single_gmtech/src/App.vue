@@ -170,7 +170,7 @@ html,
 
 body {
   font-size: 16px;
-  line-height: 1.3;
+  line-height: 1.25;
   min-width: 320px;
   position: relative;
   overflow-x: hidden;

@@ -34,7 +34,7 @@ export default {
         $footer.style.paddingTop = "0px";
       } else {
         $footer.style.position = "absolute";
-        $footer.style.paddingTop = "18px";
+        $footer.style.paddingTop = "14px";
         $footer.style.top = "auto";
       }
     },
