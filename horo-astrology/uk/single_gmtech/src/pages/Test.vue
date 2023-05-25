@@ -136,9 +136,7 @@ export default {
   @media (max-height: 700px) {
     padding-top: 30px;
   }
-  @media (min-width: 1200px) {
-    max-height: 500px;
-  }
+
   &__title {
     display: block;
     font-size: 22px;
@@ -169,10 +167,6 @@ export default {
 .birth {
   .dot:nth-child(2) {
     background-color: white;
-  }
-
-  @media (min-width: 1200px) {
-    padding: 35px;
   }
 }
 .person {
