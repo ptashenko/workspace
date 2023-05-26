@@ -58,6 +58,9 @@
             alert.style.top = "-200px";
             this.alertOpened = false;
           }, this.alertDuration);
+
+          dataLayer.push({ 'event': 'comment', 'value': this.comment });
+
           this.comment = "";
           this.showIcons(false)
         }
