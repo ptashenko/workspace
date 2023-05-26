@@ -235,6 +235,7 @@ h2 {
   height: 100%;
   padding-bottom: 54px;
   overflow: scroll;
+
   /* &.unset {
     min-height: 700px !important;
     @media (max-height: 700px) {
@@ -242,6 +243,11 @@ h2 {
     }
   } */
 }
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
 .content:not(.Desctop) {
   .wrapper.btnStart {
     justify-content: flex-start;

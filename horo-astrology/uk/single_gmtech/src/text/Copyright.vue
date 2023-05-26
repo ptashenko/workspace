@@ -52,10 +52,10 @@ export default {
 .copyright {
   // position: absolute;
   // margin-top: -50px;
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
   color: #ffffff;
-  line-height: 1.25;
+  line-height: 1.35;
   left: 0;
   right: 0;
   span,

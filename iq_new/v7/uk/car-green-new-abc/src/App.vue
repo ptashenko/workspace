@@ -230,6 +230,11 @@ h2 {
     }
   }
 }
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -28,7 +28,7 @@ export default {
 
 <style scoped lang="scss">
 .copyright {
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
   line-height: 1.4;
   color: grey;

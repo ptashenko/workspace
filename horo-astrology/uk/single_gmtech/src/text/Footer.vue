@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss">
 .footer {
-  line-height: 1.25;
+  line-height: 1.2;
   font-size: 13px;
   text-align: center;
   color: #ffffff;
