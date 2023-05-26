@@ -2,7 +2,7 @@
   <div class="footer" >
     <p>
         <span style="font-size: 13px">
-      Calls cost <span class="price">£6/call</span> plus your phone company’s access charge,plus a one off connection charge of <span class="price">£3</span> service is for entertainment only 18+.
+      Calls cost <span class="price">£6/call</span> plus your phone company’s access charge,<br>plus a one off connection charge of <span class="price">£3</span> service is for entertainment only 18+.
         </span>
       <br>
       <br>
@@ -32,9 +32,8 @@ export default {
 <style lang="scss">
 
 .footer {
-  margin-top: 10px;
   font-size: 13px;
-  line-height: 15px;
+  line-height: 1.25;
   text-align: center;
   color: #282828;
   left: 0;

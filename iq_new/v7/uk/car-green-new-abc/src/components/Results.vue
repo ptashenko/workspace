@@ -25,7 +25,6 @@
         {{ text.button }}
       </a>
     </div>
-    <Footer />
   </div>
 </template>
 

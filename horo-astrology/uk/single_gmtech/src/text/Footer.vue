@@ -1,8 +1,9 @@
 <template>
   <div class="footer" ref="footer">
-      <span style="font-size: 13px">
-    Calls cost <b>£3/call + £3/min</b>, <br> plus a one off connection charge of <b>£3</b>, service is for entertainment only 18+.
-      </span>
+    <span style="font-size: 13px">
+      Calls cost <b>£3 per call, plus £3 per minute</b>,
+      <br>plus <b>£3</b> connection fee, service is for entertainment only 18+.
+    </span>
     <br />
       <br />
 
@@ -51,6 +52,7 @@ export default {
 
 <style lang="scss">
 .footer {
+  line-height: 1.2;
   font-size: 13px;
   text-align: center;
   color: #ffffff;

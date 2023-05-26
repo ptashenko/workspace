@@ -1,8 +1,8 @@
 <template>
   <p class="copyright">
-      <span style="font-size: 13px">
+    <span style="font-size: 13px">
     Calls cost <span class="price">£6/call</span> plus your phone company’s access charge, plus a one off connection charge of <span class="price">£3</span> service is for entertainment only 18+.
-      </span>
+    </span>
     <br>
     Customer care <a href="mailto:support@gmtechmedia.com">support@gmtechmedia.com</a>
     <br>
@@ -28,9 +28,9 @@ export default {
 
 <style scoped lang="scss">
 .copyright {
-  margin-top: 20px;
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
+  line-height: 1.4;
   color: grey;
   a {
     color: grey;

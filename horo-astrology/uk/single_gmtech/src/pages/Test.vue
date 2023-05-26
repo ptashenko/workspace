@@ -125,6 +125,14 @@ export default {
       this.isComplete = true;
     }
   },
+  watch: {
+    questionNumber() {
+      window.scrollTo(0, 0);
+    },
+    screen() {
+      window.scrollTo(0, 0);
+    },
+  }
 };
 </script>
 
@@ -136,6 +144,7 @@ export default {
   @media (max-height: 700px) {
     padding-top: 30px;
   }
+
   &__title {
     display: block;
     font-size: 22px;
@@ -147,6 +156,10 @@ export default {
       font-size: 20px;
       line-height: 24px;
       margin-bottom: 20px;
+    }
+    @media (min-width: 1200px) {
+      padding-top: 0;
+      margin-bottom: 10px;
     }
   }
   &__text {
