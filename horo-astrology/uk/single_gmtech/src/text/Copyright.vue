@@ -22,39 +22,40 @@
 <script>
 export default {
   name: "Copyright",
-  methods: {
-    copyrightPosition() {
-      const MAGIK_NUMBER = 30;
-      let $footer = this.$refs.copyright,
-        footerPrevElem = $footer.previousElementSibling,
-        windowHeight = window.innerHeight;
-      if (windowHeight > footerPrevElem.offsetHeight + MAGIK_NUMBER) {
-        $footer.style.position = "absolute";
-        $footer.style.top = `${windowHeight - MAGIK_NUMBER}px`;
-        $footer.style.paddingTop = "0px";
-      } else {
-        $footer.style.position = "absolute";
-        $footer.style.paddingTop = "14px";
-        $footer.style.top = "auto";
-      }
-    },
-  },
-  mounted() {
-    setTimeout(() => this.copyrightPosition(), 100);
-    window.onresize = () => {
-      this.copyrightPosition();
-    };
-  },
+  // methods: {
+  //   copyrightPosition() {
+  //     const MAGIK_NUMBER = 30;
+  //     let $footer = this.$refs.copyright,
+  //       footerPrevElem = $footer.previousElementSibling,
+  //       windowHeight = window.innerHeight;
+  //     if (windowHeight > footerPrevElem.offsetHeight + MAGIK_NUMBER) {
+  //       $footer.style.position = "absolute";
+  //       $footer.style.top = `${windowHeight - MAGIK_NUMBER}px`;
+  //       $footer.style.paddingTop = "0px";
+  //     } else {
+  //       $footer.style.position = "absolute";
+  //       $footer.style.paddingTop = "14px";
+  //       $footer.style.top = "auto";
+  //     }
+  //   },
+  // },
+  // mounted() {
+  //   setTimeout(() => this.copyrightPosition(), 100);
+  //   window.onresize = () => {
+  //     this.copyrightPosition();
+  //   };
+  // },
 };
 </script>
 
 <style lang="scss">
 .copyright {
-  position: absolute;
-  margin-top: -50px;
+  // position: absolute;
+  // margin-top: -50px;
   font-size: 11px;
   text-align: center;
   color: #ffffff;
+  line-height: 1.25;
   left: 0;
   right: 0;
   span,

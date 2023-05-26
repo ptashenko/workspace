@@ -26,8 +26,6 @@
       </div>
       <span class="of">{{ testNumber }}</span>
     </div>
-
-    <Copyright />
   </div>
 </template>
 
@@ -84,6 +82,11 @@ export default {
       }
     },
   },
+  watch: {
+    questionNumber() {
+      window.scrollTo(0, 0);
+    },
+  }
 };
 </script>
 

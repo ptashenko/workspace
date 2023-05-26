@@ -16,7 +16,6 @@
                     <label class="label" for="+18">{{ text.checkboxLabel }}</label>
                 </div>
             </div>
-            <Copyright/>
         </div>
     </div>
 </template>

@@ -113,26 +113,26 @@ export default {
             }, {})
         : {};
     },
-    getHeight() {
-      let content = this.$refs.content;
-      let contentHeight = content.scrollHeight;
-      let contentChildren = this.$refs.content.children[0].scrollHeight + 54;
-      if (this.page === "results") {
-        content.classList.add("unset");
-        content.style.height = "auto";
-      }
-      if (contentHeight < contentChildren && this.page !== "results") {
-        content.style.minHeight = contentChildren + "px";
-      } else if (contentHeight > contentChildren) {
-        content.style.minHeight = "unset";
-      }
-    },
+    // getHeight() {
+    //   let content = this.$refs.content;
+    //   let contentHeight = content.scrollHeight;
+    //   let contentChildren = this.$refs.content.children[0].scrollHeight + 54;
+    //   if (this.page === "results") {
+    //     content.classList.add("unset");
+    //     content.style.height = "auto";
+    //   }
+    //   if (contentHeight < contentChildren && this.page !== "results") {
+    //     content.style.minHeight = contentChildren + "px";
+    //   } else if (contentHeight > contentChildren) {
+    //     content.style.minHeight = "unset";
+    //   }
+    // },
   },
   mounted() {
-    window.onresize = () => {
-      this.getHeight();
-    };
-    setTimeout(() => this.getHeight(), 100);
+    // window.onresize = () => {
+    //   this.getHeight();
+    // };
+    // setTimeout(() => this.getHeight(), 100);
 
     if (!this.QUERY.click_id) {
       let data = JSON.stringify(this.QUERY);
@@ -144,9 +144,9 @@ export default {
       this.click_id = this.QUERY.click_id;
     }
   },
-  updated() {
-    this.getHeight();
-  },
+  // updated() {
+  //   this.getHeight();
+  // },
 };
 </script>
 
@@ -163,14 +163,24 @@ export default {
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 html,
 #app {
   height: 100%;
 }
 
+#app {
+  padding-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   font-size: 16px;
-  line-height: 1.25;
+  line-height: 1.3;
   min-width: 320px;
   position: relative;
   overflow-x: hidden;
@@ -219,10 +229,12 @@ h2 {
 }
 
 .content {
+  flex-shrink: 0;
   max-width: 375px;
   margin: 0 auto;
   height: 100%;
   padding-bottom: 54px;
+  overflow: scroll;
   /* &.unset {
     min-height: 700px !important;
     @media (max-height: 700px) {

@@ -19,6 +19,8 @@
         :phoneNumber="phoneNumber"
       ></Results>
     </div>
+    <Copyright v-if="page === 'start' || page === 'test'"></Copyright>
+    <Footer v-if="page === 'results'"></Footer>
   </div>
 </template>
 
@@ -27,6 +29,8 @@ import Start from "@/components/Start";
 import Test from "@/components/Test";
 import Calculate from "@/components/Calculate";
 import Results from "@/components/Results";
+import Footer from "@/text/Footer";
+import Copyright from "@/text/Copyright";
 
 export default {
   name: "App",
@@ -35,6 +39,8 @@ export default {
     Test,
     Calculate,
     Results,
+    Copyright,
+    Footer
   },
   data() {
     return {
@@ -128,8 +134,23 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+#app {
+  height: 100%;
+}
+
+#app {
+  padding-bottom: 37px;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
-  min-height: 100vh;
+  height: 100%;
   font-size: 16px;
   min-width: 320px;
   position: relative;
@@ -182,8 +203,11 @@ h2 {
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
+  flex-shrink: 0;
   background-position: calc(50% + 49px) calc(50% + 4px);
+  overflow: scroll;
+
   .content {
     flex: 1 0 auto;
     position: relative;

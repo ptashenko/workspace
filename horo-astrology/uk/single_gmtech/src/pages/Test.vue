@@ -125,6 +125,14 @@ export default {
       this.isComplete = true;
     }
   },
+  watch: {
+    questionNumber() {
+      window.scrollTo(0, 0);
+    },
+    screen() {
+      window.scrollTo(0, 0);
+    },
+  }
 };
 </script>
 
