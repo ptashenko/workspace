@@ -72,7 +72,7 @@ export default {
     text-align: center;
     @media (max-height: 700px), (max-width: 400px) {
       font-size: 30px;
-      line-height: 37px;
+      line-height: 30px;
       margin-bottom: 15px;
     }
   }
@@ -83,7 +83,7 @@ export default {
     height: 91px;
     @media (max-height: 700px), (max-width: 400px) {
       width: 130px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
   }
 
@@ -92,7 +92,7 @@ export default {
     padding: 24px 10px;
     @media (max-height: 600px), (max-width: 360px) {
       width: 280px;
-      padding: 20px 10px;
+      padding: 15px 10px;
     }
 
     &:disabled {
@@ -123,7 +123,7 @@ export default {
     text-align: center;
     margin-bottom: 82px;
     @media (max-height: 700px), (max-width: 400px) {
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
   }
 
@@ -136,6 +136,10 @@ export default {
     justify-content: center;
     border: 1px solid #36be57;
     padding: 10px 5px;
+
+    @media (max-height: 700px), (max-width: 400px) {
+      margin-top: 15px;
+    }
 
     .checkbox {
       position: relative;

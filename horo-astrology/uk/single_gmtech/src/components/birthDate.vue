@@ -24,7 +24,7 @@ export default {
       let currentYear = new Date().getFullYear();
       let years = [];
 
-      for (let i = currentYear - 100; i < currentYear + 1; i++) {
+      for (let i = currentYear - 123; i < currentYear + 1; i++) {
         years.push({
           value: i,
           text: i,
@@ -50,9 +50,13 @@ export default {
       return newMonth;
     },
     getDays(year, month) {
-      let dayCount = new Date(year, month, 0).getDate();
+      let dayCount = new Date(year, month + 1, 0).getDate();
       let currentDay = new Date().getDate() - 1;
       let days = [];
+
+      if (month === 1 && this.isLeapYear(year)) {
+        dayCount = 29;
+      }
 
       for (let i = 1; i <= dayCount; i++) {
         days.push({
@@ -60,10 +64,14 @@ export default {
           text: i,
         });
       }
+
       let removed = days.splice(0, currentDay);
       let newMonth = days.concat(removed);
       return newMonth;
     },
+    isLeapYear(year) {
+      return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    }
   },
   mounted() {
     let vm = this;
@@ -125,9 +133,11 @@ export default {
   height: 195px;
   margin: 0 auto;
   max-width: 100%;
-  > div {
+
+  >div {
     flex: 1;
   }
+
   @media (max-height: 700px) {
     height: 150px;
   }
@@ -141,9 +151,11 @@ export default {
     color: #ddd;
     letter-spacing: 0.7px;
     cursor: pointer;
+
     @media (max-height: 700px) {
       height: 150px;
     }
+
     &:before,
     &:after {
       position: absolute;
@@ -166,6 +178,7 @@ export default {
       transform: translateZ(-150px) rotateX(0deg);
       -webkit-font-smoothing: subpixel-antialiased;
       color: #666;
+
       .select-option {
         position: absolute;
         top: 0;
@@ -175,6 +188,7 @@ export default {
         color: rgba(255, 255, 255, 0.5);
         opacity: 0.8;
         -webkit-font-smoothing: subpixel-antialiased;
+
         @for $i from 1 through 100 {
           &:nth-child(#{$i}) {
             transform: rotateX(-18deg * ($i - 1)) translateZ(150px);
@@ -187,6 +201,7 @@ export default {
   .day .highlight {
     border-radius: 5px 0 0 5px;
   }
+
   .year .highlight {
     border-radius: 0 5px 5px 0;
   }
@@ -200,6 +215,7 @@ export default {
     font-size: 24px;
     overflow: hidden;
   }
+
   .highlight-list {
     position: absolute;
     width: 100%;
@@ -208,6 +224,7 @@ export default {
   .select-wrap {
     font-size: 20px;
   }
+
   .highlight {
     font-size: 20px;
   }

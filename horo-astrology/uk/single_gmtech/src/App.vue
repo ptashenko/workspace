@@ -269,6 +269,11 @@ h2 {
   align-items: center;
   height: 100%;
   padding: 0 16px;
+
+  @media (max-height: 700px) {
+    height: 92%;
+    max-width: 360px;
+  }
 }
 
 .input {

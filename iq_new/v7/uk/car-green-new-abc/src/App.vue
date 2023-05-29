@@ -286,6 +286,14 @@ h2 {
   transition: all 0.2s;
   background-color: #ffffff;
   border-radius: 15px;
+
+  @media (max-height: 700px) and (max-width: 380px) {
+    width: 200px;
+    padding: 10px 5px;
+    font-size: 18px;
+    line-height: 23px;
+  }
+
   &.active,
   &:active {
     color: #ffffff;
@@ -296,8 +304,14 @@ h2 {
     flex-direction: column;
     align-items: center;
     margin-bottom: 27px;
+    @media (max-height: 700px) and (max-width: 380px) {
+      margin-bottom: 13px;
+    }
     .btn {
       margin-bottom: 21px;
+      @media (max-height: 700px) and (max-width: 380px) {
+        margin-bottom: 15px;
+      }
       &:last-child {
         margin-bottom: 0;
       }
@@ -310,10 +324,18 @@ h2 {
     &.big {
       .btn {
         width: 315px;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 23px;
+      @media (max-height: 700px) and (max-width: 380px) {
+        width: 290px;
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+      &:last-child {
+        margin-bottom: 0;
       }
     }
+  }
   }
 }
 @keyframes pulse {

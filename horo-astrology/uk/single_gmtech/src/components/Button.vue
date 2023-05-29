@@ -79,7 +79,7 @@ export default {
     width: 100%;
     margin-top: 20px;
     @media (max-height: 700px) {
-      min-height: 80px;
+      min-height: 65px;
     }
   }
   &--small {

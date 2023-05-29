@@ -84,8 +84,8 @@ export default {
     font-size: 40px;
     line-height: 47px;
     @media (max-height: 700px) and (max-width: 400px) {
-      font-size: 30px;
-      line-height: 37px;
+      font-size: 26px;
+      line-height: 30px;
     }
   }
   .text {
@@ -95,9 +95,9 @@ export default {
     line-height: 26px;
     color: #36be57;
     @media (max-height: 700px) and (max-width: 400px) {
-      font-size: 18px;
-      line-height: 22px;
-      margin-bottom: 25px;
+      font-size: 16px;
+      line-height: 10px;
+      margin-bottom: 15px;
     }
   }
   .step {
@@ -107,7 +107,7 @@ export default {
     margin-bottom: 33px;
     opacity: 0;
     @media (max-height: 700px) and (max-width: 400px) {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     &.show {
       opacity: 1;
@@ -144,7 +144,7 @@ export default {
       @media (max-height: 700px) and (max-width: 400px) {
         font-size: 14px;
         line-height: 17px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         min-width: calc(100% - 80px);
       }
     }

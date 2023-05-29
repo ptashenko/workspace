@@ -1,11 +1,7 @@
 <template>
   <div class="information__page">
     <ul class="relation__list" v-if="questionNumber === 4">
-      <li
-        v-for="(relation, index) in text.relations"
-        :key="index"
-        class="relation__item"
-      >
+      <li v-for="(relation, index) in text.relations" :key="index" class="relation__item">
         <div class="relation__item--wrapper" @click="chooseRelation(index)">
           <span class="img" :class="{ choosen: relationIndex === index }">
             <img :src="require('../assets/static/' + relation[0])" alt="" />
@@ -17,23 +13,13 @@
       </li>
     </ul>
     <ul class="interest__list" v-if="questionNumber === 5" :class="{ error }">
-      <li
-        class="interest__item"
-        v-for="(interest, index) in text.interests"
-        :key="index"
-        @click="activeBtn($event, interest)"
-      >
+      <li class="interest__item" v-for="(interest, index) in text.interests" :key="index"
+        @click="activeBtn($event, interest)">
         {{ interest }}
       </li>
     </ul>
-    <DifferentZodiac
-      v-on:checkChoose="chooseRelation"
-      v-if="questionNumber === 6"
-    ></DifferentZodiac>
-    <AnalyzePicture
-      v-if="questionNumber === 7"
-      v-on:nextPageCalculate="nextPageCalculate"
-    ></AnalyzePicture>
+    <DifferentZodiac v-on:checkChoose="chooseRelation" v-if="questionNumber === 6"></DifferentZodiac>
+    <AnalyzePicture v-if="questionNumber === 7" v-on:nextPageCalculate="nextPageCalculate"></AnalyzePicture>
   </div>
 </template>
 
@@ -86,6 +72,7 @@ export default {
   &__page {
     max-width: 100%;
   }
+
   .relation {
     &__list {
       display: flex;
@@ -93,32 +80,49 @@ export default {
       justify-content: space-between;
       max-width: 100%;
       width: 309px;
+
+      @media (max-height: 600px) {
+        margin-top: 0;
+      }
+
+      @media (max-height: 700px) {
+        margin-top: 15px;
+      }
     }
+
     &__item {
       width: 50%;
       margin-bottom: 40px;
+
       @media (max-height: 700px) {
         margin-bottom: 20px;
       }
+
       &:nth-last-child(-n + 2) {
         margin-bottom: 0;
       }
+
       .img {
         margin-bottom: 35px;
         transition: all 0.2s;
+
         @media (max-height: 700px) {
-          margin-bottom: 15px;
+          margin-bottom: 10px;
         }
+
         &.choosen {
           transform: scale(1.5);
+
           @media (max-height: 700px) {
             transform: scale(1.2);
           }
         }
+
         img {
           height: 60px;
         }
       }
+
       &--wrapper {
         display: flex;
         flex-direction: column;
@@ -126,15 +130,18 @@ export default {
         cursor: pointer;
       }
     }
+
     &__text {
       font-size: 15px;
       line-height: 18px;
       transition: all 0.2s;
+
       &.error {
         color: red;
       }
     }
   }
+
   .interest {
     &__list {
       /* display: flex;
@@ -147,12 +154,14 @@ export default {
       row-gap: 2px;
       max-width: 100%;
       width: 325px;
+
       &.error {
         li {
           border-color: red;
         }
       }
     }
+
     &__item {
       margin: 6px 0;
       display: block;
@@ -165,19 +174,21 @@ export default {
       cursor: pointer;
       transition: background, color, border-color 0.2s;
       text-align: center;
+
       &.active {
         background: linear-gradient(96.28deg, #7b2be0 2.55%, #d9c9ff 98.53%);
         color: #ffffff;
         border: 0;
         padding: 8px 15px;
       }
+
       &:last-child {
         margin-right: 0;
       }
     }
+
     &__item:first-child {
       margin: 6px 0;
     }
   }
-}
-</style>
+}</style>
