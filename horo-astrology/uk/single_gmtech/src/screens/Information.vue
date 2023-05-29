@@ -95,7 +95,7 @@ export default {
       margin-bottom: 40px;
 
       @media (max-height: 700px) {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
 
       &:nth-last-child(-n + 2) {

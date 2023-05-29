@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{'p-footer': page !== 'calculate'}">
     <div class="content" ref="content" :class="checkDevice">
       <Start v-if="page === 'start'" v-on:nextPageTest="nextPageTest"></Start>
       <Test v-if="page === 'test'" v-on:nextPageCalc="nextPageCalc"></Test>
@@ -173,9 +173,12 @@ html,
 }
 
 #app {
-  padding-bottom: 36px;
   display: flex;
   flex-direction: column;
+}
+
+.p-footer {
+  padding-bottom: 36px;
 }
 
 body {
@@ -233,7 +236,7 @@ h2 {
   max-width: 375px;
   margin: 0 auto;
   height: 100%;
-  padding-bottom: 54px;
+  // padding-bottom: 54px;
   overflow: scroll;
 
   /* &.unset {
@@ -271,7 +274,7 @@ h2 {
   padding: 0 16px;
 
   @media (max-height: 700px) {
-    height: 92%;
+    height: 100%;
     max-width: 360px;
   }
 }

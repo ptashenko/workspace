@@ -140,7 +140,7 @@ export default {
 .test {
   height: 100%;
   padding-top: 45px;
-  min-height: 550px;
+  // min-height: 550px;
   @media (max-height: 700px) {
     padding-top: 30px;
   }

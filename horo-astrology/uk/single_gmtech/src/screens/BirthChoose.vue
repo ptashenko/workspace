@@ -123,4 +123,8 @@ export default {
     }
   }
 }
+
+.input--input {
+  margin-bottom: 20px;
+}
 </style>

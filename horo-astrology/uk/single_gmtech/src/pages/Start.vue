@@ -86,6 +86,7 @@ export default {
 
   .list {
     margin-top: 12px;
+    margin-bottom: 20px;
 
     &__item {
       position: relative;

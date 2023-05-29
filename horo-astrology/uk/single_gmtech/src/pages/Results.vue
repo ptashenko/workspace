@@ -81,9 +81,6 @@ export default {
   padding-top: 20px;
   height: 100%;
   max-height: 600px;
-  @media (max-height: 700px) {
-    max-height: 490px;
-  }
 
   &__img {
     display: flex;
