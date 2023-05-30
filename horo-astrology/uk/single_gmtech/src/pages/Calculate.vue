@@ -119,7 +119,7 @@ export default {
     font-size: 22px;
     line-height: 26px;
     @media (max-height: 700px) {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
   }
   .checkmark {
@@ -170,7 +170,7 @@ export default {
     position: relative;
     margin-bottom: 90px;
     @media (max-height: 700px) {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     span {
       position: absolute;

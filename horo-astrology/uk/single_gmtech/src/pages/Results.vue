@@ -81,9 +81,6 @@ export default {
   padding-top: 20px;
   height: 100%;
   max-height: 600px;
-  @media (max-height: 700px) {
-    max-height: 490px;
-  }
 
   &__img {
     display: flex;
@@ -128,9 +125,9 @@ export default {
     text-align: center;
     color: #ffffff;
     @media (max-height: 700px) {
-      font-size: 15px;
-      line-height: 17px;
-      margin-bottom: 15px;
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 12px;
     }
 
     &.bold {
@@ -165,6 +162,10 @@ export default {
     border-radius: 70px;
     text-align: center;
 
+    @media (max-height: 700px) and (max-width: 380px) {
+      width: 90%;
+    }
+
     &:before {
       content: "";
       display: block;
@@ -191,5 +192,9 @@ export default {
   border-radius: 15px;
   padding: 15px;
   margin-bottom: 20px;
+
+  @media (max-height: 700px) {
+      margin-bottom: 10px;
+    }
 }
 </style>

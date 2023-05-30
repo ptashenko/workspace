@@ -7,16 +7,17 @@
 </template>
 
 <script>
-import { monthNames } from '@/text/month';
-import IosSelector from '@/mixins/IosSelector';
+import { monthNames } from "@/text/month";
+import IosSelector from "@/mixins/IosSelector";
 
 export default {
-  name: 'birthDate',
+  name: "birthDate",
   data() {
     return {
       year: null,
       month: null,
       day: null,
+      monthesCount: 12,
     };
   },
   methods: {
@@ -24,7 +25,7 @@ export default {
       let currentYear = new Date().getFullYear();
       let years = [];
 
-      for (let i = currentYear - 100; i < currentYear + 1; i++) {
+      for (let i = currentYear - 123; i < currentYear + 1; i++) {
         years.push({
           value: i,
           text: i,
@@ -39,20 +40,38 @@ export default {
       let currentMonth = new Date().getMonth();
       let months = [];
       let monthList = monthNames;
-      for (let i = 1; i <= 12; i++) {
+      this.year === new Date().getFullYear()
+        ? (this.monthesCount = currentMonth + 1)
+        : (this.monthesCount = 12);
+
+      for (let i = 1; i <= this.monthesCount; i++) {
         months.push({
           value: i,
           text: monthList[i - 1],
         });
       }
+
       let removed = months.splice(0, currentMonth);
       let newMonth = months.concat(removed);
+
       return newMonth;
     },
     getDays(year, month) {
-      let dayCount = new Date(year, month, 0).getDate();
+      let dayCount =
+        new Date(year, month, 0) >= new Date()
+          ? new Date().getDate()
+          : new Date(year, month, 0).getDate();
       let currentDay = new Date().getDate() - 1;
+
+      this.year === new Date().getFullYear()
+        ? (this.monthesCount = new Date().getMonth() + 1)
+        : 12;
+
       let days = [];
+
+      if (month === 1 && this.isLeapYear(year)) {
+        dayCount = 29;
+      }
 
       for (let i = 1; i <= dayCount; i++) {
         days.push({
@@ -60,31 +79,41 @@ export default {
           text: i,
         });
       }
+
       let removed = days.splice(0, currentDay);
       let newMonth = days.concat(removed);
       return newMonth;
     },
+    isLeapYear(year) {
+      return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    },
   },
   mounted() {
+    this.monthesCount = new Date().getMonth() + 1;
+
     let vm = this;
     let yearSelector = new IosSelector({
-      el: '#year1',
-      type: 'infinite',
+      el: "#year1",
+      type: "infinite",
       source: vm.getYears(),
       count: 20,
       onChange: (selected) => {
         let currentYear = selected.value;
+        this.$nextTick(() => {
+          let monthSourse = vm.getMonths();
+          monthSelector.updateSource(monthSourse);
+        });
         let daySource = vm.getDays(currentYear, 1);
         daySelector.updateSource(daySource);
         this.year = yearSelector.value;
         let date = this.month * 100 + this.day;
-        this.$emit('chooseDate', date);
+        this.$emit("chooseDate", date);
       },
     });
 
     let monthSelector = new IosSelector({
-      el: '#month1',
-      type: 'infinite',
+      el: "#month1",
+      type: "infinite",
       source: vm.getMonths(),
       count: 20,
       onChange: (selected) => {
@@ -94,19 +123,19 @@ export default {
         daySelector.updateSource(daySource);
         this.month = monthSelector.value;
         let date = this.month * 100 + this.day;
-        this.$emit('chooseDate', date);
+        this.$emit("chooseDate", date);
       },
     });
 
     let daySelector = new IosSelector({
-      el: '#day1',
-      type: 'infinite',
+      el: "#day1",
+      type: "infinite",
       source: [],
       count: 20,
       onChange: () => {
         this.day = daySelector.value;
         let date = this.month * 100 + this.day;
-        this.$emit('chooseDate', date);
+        this.$emit("chooseDate", date);
       },
     });
   },
@@ -125,9 +154,11 @@ export default {
   height: 195px;
   margin: 0 auto;
   max-width: 100%;
+
   > div {
     flex: 1;
   }
+
   @media (max-height: 700px) {
     height: 150px;
   }
@@ -141,15 +172,17 @@ export default {
     color: #ddd;
     letter-spacing: 0.7px;
     cursor: pointer;
+
     @media (max-height: 700px) {
       height: 150px;
     }
+
     &:before,
     &:after {
       position: absolute;
       z-index: 1;
       display: block;
-      content: '';
+      content: "";
       width: 100%;
       height: 50%;
     }
@@ -166,6 +199,7 @@ export default {
       transform: translateZ(-150px) rotateX(0deg);
       -webkit-font-smoothing: subpixel-antialiased;
       color: #666;
+
       .select-option {
         position: absolute;
         top: 0;
@@ -175,6 +209,7 @@ export default {
         color: rgba(255, 255, 255, 0.5);
         opacity: 0.8;
         -webkit-font-smoothing: subpixel-antialiased;
+
         @for $i from 1 through 100 {
           &:nth-child(#{$i}) {
             transform: rotateX(-18deg * ($i - 1)) translateZ(150px);
@@ -187,6 +222,7 @@ export default {
   .day .highlight {
     border-radius: 5px 0 0 5px;
   }
+
   .year .highlight {
     border-radius: 0 5px 5px 0;
   }
@@ -200,6 +236,7 @@ export default {
     font-size: 24px;
     overflow: hidden;
   }
+
   .highlight-list {
     position: absolute;
     width: 100%;
@@ -208,6 +245,7 @@ export default {
   .select-wrap {
     font-size: 20px;
   }
+
   .highlight {
     font-size: 20px;
   }

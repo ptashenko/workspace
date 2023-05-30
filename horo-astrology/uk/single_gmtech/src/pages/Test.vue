@@ -140,7 +140,7 @@ export default {
 .test {
   height: 100%;
   padding-top: 45px;
-  min-height: 550px;
+  // min-height: 550px;
   @media (max-height: 700px) {
     padding-top: 30px;
   }
@@ -152,6 +152,11 @@ export default {
     line-height: 26px;
     text-align: center;
     margin-bottom: 34px;
+    @media (max-height: 600px) {
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 10px;
+    }
     @media (max-height: 700px) {
       font-size: 20px;
       line-height: 24px;
@@ -167,9 +172,18 @@ export default {
     font-size: 18px;
     line-height: 21px;
     text-align: center;
+
+    @media (max-height: 700px) {
+      font-size: 16px;
+    line-height: 20px;
+    }
   }
   &__top {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+
+    @media (max-height: 700px) {
+      margin-bottom: 0;
+      }
   }
 }
 .birth {

@@ -101,7 +101,7 @@ export default {
     width: 150px;
     height: 81px;
     @media (max-height: 700px) and (max-width: 380px) {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
   }
   .title {
@@ -110,6 +110,9 @@ export default {
     font-size: 18px;
     line-height: 21px;
     color: rgba(0, 0, 0, 0.5);
+    @media (max-height: 700px) and (max-width: 380px) {
+      margin-bottom: 5px;
+    }
   }
   .text {
     display: flex;
@@ -122,9 +125,11 @@ export default {
     font-size: 25px;
     line-height: 29px;
     @media (max-height: 700px) and (max-width: 380px) {
-      height: 90px;
-      font-size: 23px;
-      line-height: 27px;
+      height: fit-content;
+      margin-top: 15px;
+      margin-bottom: 25px;
+      font-size: 20px;
+      line-height: 25px;
     }
   }
   .next {

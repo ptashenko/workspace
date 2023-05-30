@@ -115,6 +115,7 @@ export default {
     @media (max-height: 700px), (max-width: 400px) {
       width: 170px;
       height: 91px;
+      margin-bottom: 15px;
     }
   }
   .wrapper {
@@ -141,7 +142,7 @@ export default {
     padding: 24px 4px;
     @media (max-height: 736px), (max-width: 414px) {
       font-size: 20px;
-      padding: 12px 10px;
+      padding: 10px 0;
       width: 310px;
     }
     @media (max-height: 320px), (max-width: 568px) {
@@ -171,7 +172,7 @@ export default {
     @media (max-height: 700px), (max-width: 400px) {
       font-size: 14px;
       line-height: 17px;
-      margin-bottom: 13px;
+      margin-bottom: 10px;
     }
   }
   &__hurry {
@@ -198,7 +199,8 @@ export default {
     @media (max-height: 700px), (max-width: 400px) {
       font-size: 14px;
       line-height: 17px;
-      margin-bottom: 13px;
+      margin-bottom: 10px;
+      padding: 3px;
     }
   }
   &__wait {
@@ -227,6 +229,10 @@ export default {
     justify-content: center;
     height: 100px;
     margin-bottom: 15px;
+    @media (max-height: 700px), (max-width: 400px) {
+      height: 80px;
+      margin-bottom: 10px;
+    }
   }
 
   .call-info {

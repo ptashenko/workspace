@@ -78,7 +78,7 @@ export default {
     font-size: 20px;
     line-height: 23px;
     text-align: center;
-    @media (max-height: 700px) {
+    @media (max-height: 700px) and (max-width: 380px) {
       font-size: 18px;
       line-height: 20px;
     }
@@ -86,6 +86,7 @@ export default {
 
   .list {
     margin-top: 12px;
+    margin-bottom: 20px;
 
     &__item {
       position: relative;
@@ -132,6 +133,10 @@ export default {
   border: 2px solid white;
   padding: 10px;
   text-transform: uppercase;
+
+  @media (max-width: 380px) {
+    font-size: 14px;
+  }
 
   input {
     transform: scale(2);
