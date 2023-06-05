@@ -1,6 +1,9 @@
 <template>
-  <footer class="footer" v-html="!view ? footerObj.main_footer[footerGeo] : footerObj.second_footer[footerGeo]"></footer>
+  <footer :class="['footer', {'footer-height': view}]"
+          v-html="!view ? footerObj.main_footer[footerGeo] : footerObj.second_footer[footerGeo]">
+  </footer>
 </template>
+
 
 <script>
 export default {
@@ -21,6 +24,7 @@ export default {
   padding: 0 15px;
   background-color: #0c1117;
   color: #7b8b9e;
+  line-height: 0.4;
   
   @media (max-width: 320px) {
     min-width: 283px;
@@ -35,5 +39,11 @@ export default {
     text-decoration: none;
     color: #7b8b9e;
   }
+
+.footer-height {
+  @media (max-width: 722px) {
+    line-height: 1.2;
+  }
+}
 
 </style>

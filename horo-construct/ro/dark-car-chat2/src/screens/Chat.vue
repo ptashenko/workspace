@@ -45,7 +45,7 @@
         <div class="callButton animated pulse infinite" v-if="midx === messages.length">
           <a :href="smsBuilder" class="firstButton" @click="sendClick()">
             <img class="firstButton__img" src="../assets/img/starter-arr.svg" alt />
-            <span class="firstButton__text ">Sună Acum</span>
+            <span class="firstButton__text ">Trimite SMS</span>
           </a>
         </div>
         <div v-if="midx === messages.length">
@@ -139,7 +139,7 @@
 }
 
 .main {
-  padding: 25px 15px 35px 15px;
+  padding: 25px 15px 0 15px;
   max-width: 400px;
   margin: 0 auto;
   height: 100%;
@@ -475,7 +475,6 @@
 </style>
 
 <script>
-import Footer from "../components/Footer.vue";
 import Timer from "../components/Timer";
 import Comments from "../components/Comments";
 import messages from "../mixins/messages";

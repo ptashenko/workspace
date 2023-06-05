@@ -73,6 +73,6 @@ body {
   background: #ede6dd;
   height: 100%;
   background: #0c1117;
-  padding-bottom: 50px;
+  padding-bottom: 37px;
 }
 </style>

@@ -143,7 +143,7 @@
 }
 
 .main {
-  padding: 25px 15px 35px 15px;
+  padding: 25px 15px 0 15px;
   max-width: 400px;
   margin: 0 auto;
   height: 100%;
@@ -479,7 +479,6 @@
 </style>
 
 <script>
-import Footer from "../components/Footer.vue";
 import Timer from "../components/Timer";
 import Comments from "../components/Comments";
 import messages from "../mixins/messages";
