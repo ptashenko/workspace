@@ -15,7 +15,7 @@
       <a
         class="btn active callBtn"
         v-metrics
-        :href="buttonLink"
+        :href="smsBuilder"
         @click="sendClick()"
       >
         {{ text.button }}
@@ -74,13 +74,14 @@ export default {
       }
       return smsText;
     },
-    buttonCreator(type, href) {
-      this.buttonLink = href;
+    sendClick() {
+      if (window.mbp) {
+        window.mbp.pixel.send("cta");
+      }
     },
-    checkOperator() {
-      this.buttonCreator("sms", this.smsBuilder());
-    },
-    smsBuilder() {
+  },
+  computed: {
+        smsBuilder() {
       var smsTemplate;
       switch (this.device) {
         case "iOS":
@@ -95,17 +96,9 @@ export default {
       }
       return smsTemplate;
     },
-    sendClick() {
-      if (window.mbp) {
-        window.mbp.pixel.send("cta");
-      }
-    },
   },
   mounted() {
     this.timeExpire();
-  },
-  created() {
-    this.checkOperator();
   },
 };
 </script>

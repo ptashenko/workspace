@@ -17,14 +17,10 @@
 </template>
 
 <script>
-import Copyright from '@/text/Copyright';
 import { start } from '../text/start';
 
 export default {
   name: 'Start',
-  components: {
-    Copyright,
-  },
   data() {
     return {
       text: start,
