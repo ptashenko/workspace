@@ -14,7 +14,8 @@
     </div>
     <div class="main">
       <div class="blow" ref="blow">
-        <div class="message" v-for="(message, index) in delivered" :key="index" :class="{ 'message--user': message.user }">
+        <div class="message" v-for="(message, index) in delivered" :key="index"
+          :class="{ 'message--user': message.user }">
           <span class="message__text" v-html="message.text"></span>
           <div class="container-button" v-show="message.type === 'question' && index === idx - 1">
             <button class="container__button" v-for="(answer, id) in message.answers" :key="id"
@@ -42,18 +43,13 @@
           </span>
         </div>
         <div class="callButton animated pulse infinite" v-if="midx === messages.length">
-          <a :href="'tel:' + phoneNumber" class="firstButton" v-show="phoneNumber" @click="sendClick(); return true">
+          <a :href="smsBuilder" class="firstButton" @click="sendClick()">
             <img class="firstButton__img" src="../assets/img/starter-arr.svg" alt />
-            <span class="firstButton__text ">Sună Acum</span>
+            <span class="firstButton__text ">Trimite SMS</span>
           </a>
-          <button class="firstButton" v-show="!phoneNumber" @click.prevent="getPhoneNumber"
-            onclick="fbq('track', 'Lead'); return true;">
-            <img class="firstButton__img" src="../assets/img/starter-arr.svg" alt />
-            <span class="firstButton__text ">Sună Acum</span>
-          </button>
         </div>
         <div v-if="midx === messages.length">
-            <Comments />
+          <Comments />
         </div>
         <div class="typing" v-if="typing">
           {{ person }} tastează
@@ -501,12 +497,11 @@ export default {
       city: null,
       delivered: [],
       innerHeight: window.innerHeight,
-      defaultPhoneNumber: '+0505742362',
-      phoneNumber: null
+      messageText: this.checkId(),
     };
   },
   components: { Timer, Comments },
-  props: ['person', "view"],
+  props: ['person', "view", "clickID"],
   mixins: [messages],
   methods: {
     scroll() {
@@ -604,36 +599,37 @@ export default {
       return `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes
         }`;
     },
-    createLink(tel) {
-      let a = document.createElement("a");
-      a.href = `tel:${tel}`;
-      a.style.display = "none";
-      document.body.appendChild(a);
-      a.click();
+    checkId() {
+      let smsText = "";
+      if (this.clickID) {
+        smsText = "IQT " + this.clickID + " Reszletes informaciot szeretnek!";
+      } else {
+        smsText = "IQT Reszletes informaciot szeretnek!";
+      }
+      return smsText;
     },
     sendClick() {
       if (window.mbp) {
         window.mbp.pixel.send("cta");
       }
     },
-    getPhoneNumber() {
-      this.sendClick();
-      if (window.mbp) {
-        window.mbp.pixel
-          .send("phone")
-          .then((response) => {
-            this.phoneNumber = "+" + response;
-            this.createLink(this.phoneNumber);
-          })
-          .catch(() => {
-            this.phoneNumber = this.defaultPhoneNumber;
-            this.createLink(this.phoneNumber);
-          });
-      } else {
-        this.phoneNumber = this.defaultPhoneNumber;
-        this.createLink(this.phoneNumber);
+  },
+  computed: {
+    smsBuilder() {
+      var smsTemplate;
+      switch (this.device) {
+        case "iOS":
+          smsTemplate = "sms:595&body=" + encodeURI(this.messageText);
+          break;
+        case "Android":
+          smsTemplate = "sms:595?body=" + encodeURI(this.messageText);
+          break;
+        default:
+          smsTemplate = "#";
+          break;
       }
-    }
+      return smsTemplate;
+    },
   },
   mounted() {
     let ths = this;
