@@ -4,7 +4,7 @@
       <Start v-if="page === 'start'" v-on:nextPageTest="nextPageTest"></Start>
       <Test v-if="page === 'test'" v-on:nextPageCalc="nextPageCalc"></Test>
       <Calculate v-if="page === 'calculate'" v-on:nextPageResults="nextPageResults"></Calculate>
-      <Results v-if="page === 'results'" v-on:nextPageStart="nextPageStart" :device="checkDevice"></Results>
+      <Results v-if="page === 'results'" :clickID="click_id" v-on:nextPageStart="nextPageStart" :device="checkDevice"></Results>
     </div>
     <Copyright v-if="page === 'start' && footerObj" :footerObj="footerObj" :footerGeo="footerGeo" />
 
@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       page: 'start',
+      click_id: null,
       footerObj: null,
       footerGeo: null,
     };
@@ -87,13 +88,14 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener("load", () => {
+    window.addEventListener('load', () => {
       if (window.mbp) {
-        window.mbp.pixel.send("click").then(() => {
+        window.mbp.pixel.send('click').then(response => {
+          this.click_id = response;
           this.getFooter();
-        });
+        })
       }
-    });
+    })
   },
 };
 </script>
@@ -170,7 +172,7 @@ h2 {
   height: 100%;
   overflow: scroll;
   flex-shrink: 0;
-
+  
   .content {
     flex: 1 0 auto;
     position: relative;
@@ -329,4 +331,5 @@ h2 {
   100% {
     transform: scale(1);
   }
-}</style>
+}
+</style>
