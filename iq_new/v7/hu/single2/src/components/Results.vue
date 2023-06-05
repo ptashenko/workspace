@@ -12,17 +12,14 @@
       <span class="results__frame">{{ text.frame }}</span>
       <span class="results__timer">{{ text.timer }} {{ time }}</span>
       
-      <a v-if="!phoneNumber" class="btn active callBtn" v-metrics @click="getPhoneNumber">
+      <a
+        class="btn active callBtn"
+        v-metrics
+        :href="buttonLink"
+        @click="sendClick()"
+      >
         {{ text.button }}
       </a>
-      <a
-      v-else
-      :href="`tel:${phoneNumber}`"
-      class="btn active callBtn"
-      @click="sendClick"
-    >
-      {{ text.button }}
-    </a>
 
     <Comments />
 
@@ -36,13 +33,13 @@ import Comments from '@/components/Comments';
 
 export default {
   name: 'Results.vue',
-  props: ['device'],
+  props: ['device', "clickID"],
   data() {
     return {
       text: results,
       time: '',
-      phoneNumber: null,
-      defaultPhoneNumber: "+0505742362",
+      messageText: this.checkId(),
+      buttonLink: null,
     };
   },
   components: {
@@ -68,41 +65,48 @@ export default {
     nextPageStart() {
       this.$emit('nextPageStart');
     },
+    checkId() {
+      let smsText = "";
+      if (this.clickID) {
+        smsText = "IQT " + this.clickID + " Reszletes informaciot szeretnek!";
+      } else {
+        smsText = "IQT Reszletes informaciot szeretnek!";
+      }
+      return smsText;
+    },
+    buttonCreator(type, href) {
+      this.buttonLink = href;
+    },
+    checkOperator() {
+      this.buttonCreator("sms", this.smsBuilder());
+    },
+    smsBuilder() {
+      var smsTemplate;
+      switch (this.device) {
+        case "iOS":
+          smsTemplate = "sms:595&body=" + encodeURI(this.messageText);
+          break;
+        case "Android":
+          smsTemplate = "sms:595?body=" + encodeURI(this.messageText);
+          break;
+        default:
+          smsTemplate = "#";
+          break;
+      }
+      return smsTemplate;
+    },
     sendClick() {
       if (window.mbp) {
         window.mbp.pixel.send("cta");
       }
     },
-    createLink(tel) {
-      let link = document.createElement("a");
-      link.href = `tel:${tel}`;
-      link.style.display = "none";
-      document.body.appendChild(link);
-      link.click();
-    },
-    getPhoneNumber() {
-      this.sendClick();
-
-      if (window.mbp) {
-        window.mbp.pixel
-          .send("phone")
-          .then((response) => {
-            this.phoneNumber = "+" + response;
-            this.createLink(this.phoneNumber);
-          })
-          .catch(() => {
-            this.phoneNumber = this.defaultPhoneNumber;
-            this.createLink(this.phoneNumber);
-          });
-      } else {
-        this.phoneNumber = this.defaultPhoneNumber;
-        this.createLink(this.phoneNumber);
-      }
-    },
   },
   mounted() {
     this.timeExpire();
-  }
+  },
+  created() {
+    this.checkOperator();
+  },
 };
 </script>
 
@@ -160,7 +164,7 @@ export default {
       margin-right: 10px;
       width: 60px;
       height: 39px;
-      background-image: url('../assets/static/calls.svg');
+      background-image: url('../assets/static/email.svg');
       background-repeat: no-repeat;
       background-size: contain;
     }
