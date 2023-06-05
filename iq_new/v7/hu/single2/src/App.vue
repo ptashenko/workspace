@@ -76,6 +76,7 @@ export default {
     nextPageStart() {
       this.page = 'start';
     },
+    
     getFooter() {
       if (window.mbp) {
         window.mbp.pixel.send("footer").then((resp) => {
