@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Chat v-if="couner === 0" @next="next" @sendZodiak="getZodiak" :person="person" />
+    <Chat v-if="couner === 0" @next="next" :clickID="click_id" @sendZodiak="getZodiak" :person="person" @view="changeView"/>
     <Footer v-if="footerObj" :view="view" :footerObj="footerObj" :footerGeo="footerGeo" />
   </div>
 </template>
@@ -17,6 +17,7 @@ export default {
       person: "Horoscop personal",
       zodiak: null,
       couner: 0,
+      click_id: null,
       footerObj: null,
       footerGeo: null,
       view: false
@@ -33,6 +34,9 @@ export default {
     next(data) {
       this.couner += data;
     },
+    changeView(value) {
+      this.view = value;
+    },
     getFooter() {
       if (window.mbp) {
         window.mbp.pixel.send("footer").then((resp) => {
@@ -45,13 +49,14 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener("load", () => {
+    window.addEventListener('load', () => {
       if (window.mbp) {
-        window.mbp.pixel.send("click").then(() => {
+        window.mbp.pixel.send('click').then(response => {
+          this.click_id = response;
           this.getFooter();
-        });
+        })
       }
-    });
+    })
   },
 };
 </script>
